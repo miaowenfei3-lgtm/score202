@@ -235,50 +235,96 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'UA-100524-7', {'sample_rate': 5});
 </script>
-    <style>
-/* ====== 手机端自适应样式 ====== */
+<style>
+/* ====== 手机端原生UI重塑样式 ====== */
 @media screen and (max-width: 768px) {
-    /* 1. 让顶部导航栏自适应 */
-    .top-nav-wrapper .top-nav { width: 100% !important; padding: 0 10px; box-sizing: border-box; }
-    .top-nav-wrapper .top-nav-list { overflow-x: auto; white-space: nowrap; } /* 允许导航左右滑动 */
-    .top-nav-list .seach-toggel { margin-right: 15px !important; }
-    
-    /* 2. 让中间的成绩框自适应 */
-    .container { width: 100% !important; padding: 0 10px; box-sizing: border-box; }
-    .cjcx-box { padding: 20px 10px !important; margin-top: 15px !important; }
-    
-    /* 3. 修正表格文字挤在一起的问题 */
-    .cjxx-info { width: 100% !important; }
+    /* 1. 彻底隐藏电脑端多余的头部导航和庞大的黑底尾部 */
+    .top-nav-wrapper, 
+    .footer-wrapper { 
+        display: none !important; 
+    }
+
+    /* 2. 改造顶部蓝色横幅 (变图3的细长条) */
+    .yz-header-banner-wrapper { 
+        background: #2094f0 !important; 
+    }
+    .yz-header-banner-wrapper .banner { 
+        height: 60px !important; 
+        line-height: 60px !important; 
+        background: none !important; /* 去掉背景大图 */
+    }
+    .yz-header-banner-wrapper h1 { 
+        font-size: 20px !important; 
+        line-height: 60px !important; 
+        margin: 0 !important;
+    }
+    .yz-header-banner-wrapper .ch-sub-title { 
+        display: none !important; /* 隐藏横幅里的副标题 */
+    }
+
+    /* 3. 去除成绩外面的方框，让内容顶满屏幕 */
+    .container { 
+        padding: 0 !important; 
+        width: 100% !important; 
+        min-height: auto !important;
+    }
+    .cjcx-box { 
+        border: none !important; 
+        padding: 0 !important; 
+        margin: 0 !important; 
+    }
+
+    /* 4. 重塑表格样式 (图3的核心：左对齐，带下划线) */
+    .cjxx-info { 
+        width: 100% !important; 
+        border-collapse: collapse !important; 
+    }
+    .cjxx-info tr { 
+        border-bottom: 1px solid #f0f0f0 !important; /* 每一行的底部分割线 */
+        height: auto !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    .cjxx-info-cut { 
+        display: none !important; /* 隐藏用来占位的空白行 */
+    }
+    .cjxx-info td { 
+        padding: 16px 15px !important; /* 增加行高 */
+        font-size: 16px !important;    /* 放大字体 */
+    }
     .cjxx-info-title { 
-        width: 35% !important; /* 原本是410px，改成百分比 */
-        padding-right: 10px; 
+        text-align: left !important;   /* 标题从靠右改为靠左 */
+        width: 110px !important;       /* 固定左侧宽度 */
+        color: #333 !important;        /* 加深颜色 */
+        padding-right: 0 !important;
     }
     .cjxx-info-content { 
-        width: 65% !important; 
-        padding-left: 0 !important; 
+        text-align: left !important;
+        color: #666 !important;
+        flex: 1 !important;            /* 右侧内容自动撑开 */
     }
-    
-    /* 4. 让底部黑底区域自适应并居中堆叠 */
-    .footer-wrapper .footer { 
-        width: 100% !important; 
-        height: auto !important; 
-        padding: 20px 10px; 
-        text-align: center; 
-        box-sizing: border-box;
+
+    /* 5. 提示信息和按钮改造 */
+    .ivu-alert, .cjcx-tip { 
+        background-color: #fcfcfc !important; 
+        margin: 0 !important; 
+        padding: 15px !important; 
+        border: none !important;
+        border-bottom: 1px solid #eee !important;
     }
-    .footer-wrapper .footer-list,
-    .footer-wrapper .footer-units,
-    .footer-wrapper .footer-media,
-    .footer-wrapper .footer-msg { 
-        position: static !important; /* 取消原来的绝对定位 */
-        margin-bottom: 20px; 
-        display: block;
+    .cjcx-tip p {
+        color: #999 !important;
+        font-size: 13px !important;
+        line-height: 1.6 !important;
     }
-    .footer-wrapper .footer-media { display: flex; justify-content: center; }
-    
-    /* 5. 缩小大图(Banner)里的文字 */
-    .yz-header-banner-wrapper h1 { font-size: 24px !important; line-height: 34px !important; }
-    .yz-header-banner-wrapper .ch-sub-title { font-size: 13px !important; line-height: 20px !important; padding: 0 15px; }
+    .cjxx-info .ch-btn {
+        display: block !important;
+        width: 90% !important;
+        margin: 30px auto !important;
+        text-align: center !important;
+        font-size: 16px !important;
+        padding: 10px 0 !important;
+    }
 }
 </style>
 </head>
