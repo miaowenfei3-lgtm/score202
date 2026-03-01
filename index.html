@@ -1160,7 +1160,62 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             },
 
-        
+
+            // 监听目标元素尺寸变化（兼容ES5）
+            observeTargetElementSize: function(target) {
+                var _this = this;
+
+                // 使用ResizeObserver监听元素尺寸变化
+                if (window.ResizeObserver) {
+                    this.resizeObserver = new ResizeObserver(function(entries) {
+                        _this.generateWatermark();
+                    });
+                    this.resizeObserver.observe(target);
+                } else {
+                    // 降级方案：使用MutationObserver监听样式变化
+                    if (window.MutationObserver) {
+                        this.targetElementObserver = new MutationObserver(function(mutations) {
+                            _this.generateWatermark();
+                        });
+
+                        this.targetElementObserver.observe(target, {
+                            attributes: true,
+                            attributeFilter: ['style', 'class']
+                        });
+                    }
+                }
+            },
+
+            // 窗口大小变化处理
+            handleResize: function() {
+                this.generateWatermark();
+            },
+
+            // 销毁水印（清理所有资源）
+            destroyWatermark: function() {
+                // 断开所有观察者
+                if (this.watermarkObserver) {
+                    this.watermarkObserver.disconnect();
+                    this.watermarkObserver = null;
+                }
+                if (this.targetElementObserver) {
+                    this.targetElementObserver.disconnect();
+                    this.targetElementObserver = null;
+                }
+                if (this.resizeObserver) {
+                    this.resizeObserver.disconnect();
+                    this.resizeObserver = null;
+                }
+
+                // 移除DOM节点
+                if (this.watermarkDom && this.watermarkDom.parentNode) {
+                    this.watermarkDom.parentNode.removeChild(this.watermarkDom);
+                    this.watermarkDom = null;
+                }
+            }
+        }
+    });
+</script>
     
     <!-- 引入脚本 -->
     <script type="text/javascript">
