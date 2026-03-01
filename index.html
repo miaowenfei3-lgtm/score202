@@ -353,41 +353,996 @@ gtag('config', 'UA-100524-7', {'sample_rate': 5});
                 var canvas = document.createElement("canvas");
                 var ctx = canvas.getContext("2d");
                 var rotateRad = Math.abs(this.rotate * Math.PI / 180);
-                var sin = Math.sin(rotateRad);                var cos = Math.cos(rotateRad);
-                // 计算旋转后尺寸                var rotatedWidth = Math.ceil(this.watermarkWidth * cos + this.watermarkHeight * sin);                var rotatedHeight = Math.ceil(this.watermarkWidth * sin + this.watermarkHeight * cos);                var canvasWidth = rotatedWidth + this.spacing;                var canvasHeight = rotatedHeight + this.spacing;
-                canvas.width = canvasWidth;                canvas.height = canvasHeight;                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                // 设置文字样式（ES5字符串拼接）                ctx.font = this.fontSize + "px Arial, Microsoft YaHei";                ctx.fillStyle = this.color;                ctx.textAlign = "center";                ctx.textBaseline = "middle";
-                // 绘制水印文字                ctx.save();                ctx.translate(canvasWidth / 2, canvasHeight / 2);                ctx.rotate((this.rotate * Math.PI) / 180);
-                // 处理文字超长情况                var maxWidth = this.watermarkWidth - 20;                if (this.overflow === 'wrap') {                    this.drawWrappedText(ctx, this.watermarkText, 0, 0, maxWidth, this.fontSize * 1.2);                } else if (this.overflow === 'scale') {                    this.drawScaledText(ctx, this.watermarkText, 0, 0, maxWidth);                } else {                    this.drawTruncatedText(ctx, this.watermarkText, 0, 0, maxWidth);                }
+                var sin = Math.sin(rotateRad);
+                var cos = Math.cos(rotateRad);
+
+                // 计算旋转后尺寸
+                var rotatedWidth = Math.ceil(this.watermarkWidth * cos + this.watermarkHeight * sin);
+                var rotatedHeight = Math.ceil(this.watermarkWidth * sin + this.watermarkHeight * cos);
+                var canvasWidth = rotatedWidth + this.spacing;
+                var canvasHeight = rotatedHeight + this.spacing;
+
+                canvas.width = canvasWidth;
+                canvas.height = canvasHeight;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // 设置文字样式（ES5字符串拼接）
+                ctx.font = this.fontSize + "px Arial, Microsoft YaHei";
+                ctx.fillStyle = this.color;
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+
+                // 绘制水印文字
+                ctx.save();
+                ctx.translate(canvasWidth / 2, canvasHeight / 2);
+                ctx.rotate((this.rotate * Math.PI) / 180);
+
+                // 处理文字超长情况
+                var maxWidth = this.watermarkWidth - 20;
+                if (this.overflow === 'wrap') {
+                    this.drawWrappedText(ctx, this.watermarkText, 0, 0, maxWidth, this.fontSize * 1.2);
+                } else if (this.overflow === 'scale') {
+                    this.drawScaledText(ctx, this.watermarkText, 0, 0, maxWidth);
+                } else {
+                    this.drawTruncatedText(ctx, this.watermarkText, 0, 0, maxWidth);
+                }
+
                 ctx.restore();
-                // 应用水印背景（ES5字符串拼接）                var watermarkBase64 = canvas.toDataURL("image/png");                this.watermarkDom.style.backgroundImage = "url(" + watermarkBase64 + ")";                this.watermarkDom.style.backgroundRepeat = "repeat";                this.watermarkDom.style.backgroundPosition = "0 0";                this.watermarkDom.style.backgroundSize = canvasWidth + "px " + canvasHeight + "px";            },
-            // 绘制自动换行文字（纯ES5）            drawWrappedText: function(ctx, text, x, y, maxWidth, lineHeight) {                var words = text.split('');                var line = '';                var lines = [];                var i, testLine, metrics, testWidth;
-                // 逐字添加并检查宽度                for (i = 0; i < words.length; i++) {                    testLine = line + words[i];                    metrics = ctx.measureText(testLine);                    testWidth = metrics.width;
-                    if (testWidth > maxWidth && i > 0) {                        lines.push(line);                        line = words[i];                    } else {                        line = testLine;                    }                }                lines.push(line);
-                // 计算总高度并居中绘制                var totalHeight = lines.length * lineHeight;                var startY = y - totalHeight / 2;                var j;
-                for (j = 0; j < lines.length; j++) {                    ctx.fillText(lines[j], x, startY + j * lineHeight);                }            },
-            // 绘制缩放文字（纯ES5）            drawScaledText: function(ctx, text, x, y, maxWidth) {                var metrics = ctx.measureText(text);                var textWidth = metrics.width;
-                if (textWidth > maxWidth) {                    var scaleFactor = maxWidth / textWidth;                    ctx.save();                    ctx.scale(scaleFactor, scaleFactor);                    ctx.fillText(text, x / scaleFactor, y / scaleFactor);                    ctx.restore();                } else {                    ctx.fillText(text, x, y);                }            },
-            // 绘制截断文字（纯ES5）            drawTruncatedText: function(ctx, text, x, y, maxWidth) {                var metrics = ctx.measureText(text);                var textWidth = metrics.width;
-                if (textWidth > maxWidth) {                    var truncatedText = text;                    var ellipsis = '...';                    var ellipsisWidth = ctx.measureText(ellipsis).width;
-                    // 逐字减少直到适合                    while (ctx.measureText(truncatedText).width + ellipsisWidth > maxWidth && truncatedText.length > 0) {                        truncatedText = truncatedText.slice(0, -1);                    }
-                    ctx.fillText(truncatedText + ellipsis, x, y);                } else {                    ctx.fillText(text, x, y);                }            },
-            // 监听水印防篡改（纯ES5）            observeWatermark: function() {                var _this = this;
-                if (window.MutationObserver) {                    this.watermarkObserver = new MutationObserver(function(mutations) {                        mutations.forEach(function(mutation) {                            var isWatermarkRemoved = false;                            var isWatermarkHidden = false;
-                            // 检查水印是否被删除                            if (mutation.type === 'childList') {                                [].forEach.call(mutation.removedNodes, function(node) {                                    if (node === _this.watermarkDom) {                                        isWatermarkRemoved = true;                                    }                                });                            }
-                            // 检查水印是否被隐藏                            if (mutation.type === 'attributes' && mutation.target === _this.watermarkDom) {                                if (_this.watermarkDom.style.display === 'none' || _this.watermarkDom.style.visibility === 'hidden') {                                    isWatermarkHidden = true;                                }                            }
-                            if (isWatermarkRemoved || isWatermarkHidden) {                                _this.destroyWatermark();                                _this.initWatermark();                            }                        });                    });
-                    // 监听目标容器的变化                    var observerTarget = _this.isFullscreen ? document.body : _this.watermarkDom.parentElement;                    this.watermarkObserver.observe(observerTarget, {                        childList: true,                        attributes: true,                        subtree: true                    });                }            },
-            // 监听目标元素尺寸变化（兼容ES5）            observeTargetElementSize: function(target) {                var _this = this;
-                // 使用ResizeObserver监听元素尺寸变化                if (window.ResizeObserver) {                    this.resizeObserver = new ResizeObserver(function(entries) {                        _this.generateWatermark();                    });                    this.resizeObserver.observe(target);                } else {                    // 降级方案：使用MutationObserver监听样式变化                    if (window.MutationObserver) {                        this.targetElementObserver = new MutationObserver(function(mutations) {                            _this.generateWatermark();                        });
-                        this.targetElementObserver.observe(target, {                            attributes: true,                            attributeFilter: ['style', 'class']                        });                    }                }            },
-            // 窗口大小变化处理            handleResize: function() {                this.generateWatermark();            },
-            // 销毁水印（清理所有资源）            destroyWatermark: function() {                // 断开所有观察者                if (this.watermarkObserver) {                    this.watermarkObserver.disconnect();                    this.watermarkObserver = null;                }                if (this.targetElementObserver) {                    this.targetElementObserver.disconnect();                    this.targetElementObserver = null;                }                if (this.resizeObserver) {                    this.resizeObserver.disconnect();                    this.resizeObserver = null;                }
-                // 移除DOM节点                if (this.watermarkDom && this.watermarkDom.parentNode) {                    this.watermarkDom.parentNode.removeChild(this.watermarkDom);                    this.watermarkDom = null;                }            }        }    });</script>
-    <!-- 引入脚本 -->    <script type="text/javascript">    var mixin = {        data: function () {            return {                cj: {"bmh":"650698763","xm":"\u9AD8\u6587\u6E05","ksbh":"100286650600011","zjlx":"01","zjhm":"650103200403305549","bkdwdm":"10028","bkdwmc":"\u9996\u90FD\u5E08\u8303\u5927\u5B66","bkyxsm":"019","bkzydm":"135600","ksfsm":"21","zxjh":"0","zzllm":"101","zzllmc":"\u601D\u60F3\u653F\u6CBB\u7406\u8BBA","wgym":"204","wgymc":"\u82F1\u8BED\uFF08\u4E8C\uFF09","ywk1m":"763","ywk1mc":"\u827A\u672F\u5B66\u57FA\u7840","ywk2m":"842","ywk2mc":"\u4E66\u6CD5\u7684\u7406\u8BBA\u4E0E\u5B9E\u8DF5","zf":"294","zzll":"55","wgy":"68","ywk1":"97","ywk2":"74","bz":"\u65E0","km1":"(101)\u601D\u60F3\u653F\u6CBB\u7406\u8BBA\uFF1A55","km2":"(204)\u82F1\u8BED\uFF08\u4E8C\uFF09\uFF1A68","km3":"(763)\u827A\u672F\u5B66\u57FA\u7840\uFF1A97","km4":"(842)\u4E66\u6CD5\u7684\u7406\u8BBA\u4E0E\u5B9E\u8DF5\uFF1A74","zsdwsm":"\u8BF7\u8003\u751F\u767B\u5F55\u9996\u90FD\u5E08\u8303\u5927\u5B66\u7814\u7A76\u751F\u9662\u7F51\u7AD9\uFF08https:\/\/grad.cnu.edu.cn\uFF09\u67E5\u770B\u300A\u9996\u90FD\u5E08\u8303\u5927\u5B66\u5173\u4E8E2026\u5E74\u5168\u56FD\u7855\u58EB\u7814\u7A76\u751F\u62DB\u751F\u8003\u8BD5\uFF08\u521D\u8BD5\uFF09\u6210\u7EE9\u67E5\u8BE2\u53CA\u6210\u7EE9\u590D\u6838\u7B49\u5DE5\u4F5C\u7684\u901A\u77E5\u300B\u3002","yzm":"06205904"},                cxlsh: "030112051544106205904",                msg: null,                bkdwmc: "\u9996\u90FD\u5E08\u8303\u5927\u5B66" || '中国研究生招生信息网',            }        },        methods: {
-        },        mounted: function () {            // 谷歌埋点数据采集            var eventLabel = 'wap-3-login-other';            var baiduRegex = /swan\//,                weixinRegex = /micromessenger/;            if (baiduRegex.test(navigator.userAgent.toLowerCase())) {                eventLabel = 'wap-3-login-swan';            }            if (weixinRegex.test(navigator.userAgent.toLowerCase())) {                eventLabel = 'wap-3-login-wx';            }            gtag('event', 'load', {                'event_category': 'cjcx',                'event_label': eventLabel            });        }    }</script>    <style>    .wap-nav-bar {        position: relative;        z-index: 1;        height: 1.173rem;        display: flex;        align-items: center;        background: #fff;    }    .wap-nav-bar-border:after {        position: absolute;        box-sizing: border-box;        content: " ";        pointer-events: none;        top: -50%;        right: -50%;        bottom: -50%;        left: -50%;        border-bottom: 1px solid #D5D7DB;        transform: scale(.5);    }    .wap-nav-bar .wap-nav-bar__left {        position: absolute;        left: 0;        display: flex;        align-items: center;        padding: 0 0.427rem;    }    .wap-nav-bar .logo {        display: block;        width: 2.87rem;    }    .wap-nav-bar .wap-nav-bar__right {        position: absolute;        right: 0;        display: flex;        align-items: center;        padding: 0 0.427rem;        line-height: 1;    }    .logo-text {        font-size: 0.373rem;        color: #65696E;    }    .logo-text a {        color: #2B2E33;    }    .logo-dot {        display: block;        width: 0.027rem;        height: 0.533rem;        background: #E8EAED;        margin: 0 0.213rem;    }    .van-overflow-hidden {        overflow: hidden !important;    }    .ch-common-nav-popup .van-popup {        position: fixed;        width: 100%;        max-width: 750px;        margin: 0 auto;        max-height: 100%;        overflow-y: auto;        background-color: #fff;        transition: transform .3s;        -webkit-overflow-scrolling: touch    }    .ch-van-overlay {        position: fixed;        top: 0;        left: 0;        z-index: 1;        width: 100%;        height: 100%;        background-color: rgba(0, 0, 0, .7)    }    .ch-common-nav-popup .van-popup--center {        top: 50%;        left: 50%;        transform: translate3d(-50%, -50%, 0);    }    .ch-common-nav-popup .close-bar {        position: sticky;        top: 0;        height: 1.173rem;        padding: 0 .427rem;        display: flex;        align-items: center;        justify-content: space-between;        background: #fff;    }    .close-bar::after{        position: absolute;        box-sizing: border-box;        content: " ";        pointer-events: none;        top: -50%;        right: -50%;        bottom: -50%;        left: -50%;        border-bottom: 1px solid #D5D7DB;        transform: scale(.5);    }    .close-bar .logo {        display: block;        width: 2.87rem;    }    .ch-common-nav-popup .ch-van-overlay {        top: 0;        left: auto;        max-width: 750px;        margin: 0 auto    }    .ch-common-nav-popup .van-popup {        top: 0;        left: auto;    }    .ch-common-nav-popup .van-popup::after {        position: absolute;        box-sizing: border-box;        content: " ";        pointer-events: none;        top: -50%;        right: -50%;        bottom: -50%;        left: -50%;        border: 0 solid #E8EAED;        transform: scale(.5);        border-top-width: 1px;        border-color: #D5D7DB;    }    .ch-common-nav-popup .van-popup--center {        transform: none    }    .yz-top-navlist-item {        font-size: 0.43rem;        font-weight: 700;        color: #2B2E33;        line-height: 0.64rem;        display: flex;        align-items: center;        margin-bottom: 0.32rem;    }    .yz-top-navlist-title {        flex: 1;        display: flex;        align-items: center;    }    .yz-top-navlist-title::before {        display: block;        content: '';        width: 0.08rem;        height: 0.4rem;        background: #1887E0;        border-radius: 0.04rem;        margin-right: 0.13rem;    }    .yz-top-navlist-content {        display: flex;        align-items: center;        flex-wrap: wrap;        padding-bottom: 0.26rem;    }    .yz-top-navlist-content a {        display: block;        width: calc( (100% - 0.58rem) / 3 );        text-align: center;        height: 0.8rem;        line-height: 0.8rem;        border-radius: 0.11rem;        margin-bottom: 0.27rem;        margin-right: 0.29rem;        font-size: 0.37rem;        color: #2B2E33;        background: #F7F8FA;        text-decoration: none;        overflow: hidden;        text-overflow: ellipsis;        white-space: nowrap;    }    .yz-top-navlist-content a:active{        background-color: rgba(0, 0, 0, 0.05);    }    .yz-top-navlist-content a:nth-child(3n) {        margin-right: 0;    }    a.yz-top-navlist-link {        display: flex;        align-items: center;        font-size: 0.32rem;        font-weight: 400;        color: #93989E;        line-height: 0.44rem;    }    a.yz-top-navlist-link:active{        background-color: rgba(0, 0, 0, 0.05);    }    .yz-row-list{        padding: 0.35rem 0.43rem;    }    .nav-search {        display: flex;        align-items: center;    }    .nav-search span + span {        margin-left: 0.32rem;    }    .nav-search img {        display: block;        width: .64rem;    }    .ch-van-overlay-search {        background: #fff;    }    .site-search-wap {        display: flex;        align-items: center;        height: 1.173rem;        background: #F7F8FA;        padding: 0 0.427rem 0 0.24rem;    }    .top-nav-search-button-wap {        outline: none;        background: none;        border: none;        font-size: 0.373rem;        padding: 0;        margin-left: 0.32rem;        color: #2B2E33;    }    .top-nav-search-input-wap {        flex: 1;        border: 1px solid #D5D7DB;        height: 0.78rem;        background: #FFF url("https://t2.chei.com.cn/common/images/icon-search-wap.svg") left 0.21rem center no-repeat;        background-size: auto 0.533rem;        border-radius: 0.11rem;        outline: none;        padding: 0 0.21rem 0 0.88rem;        box-sizing: border-box;    }</style>
-<template id="nav-bar-template">    <div :class="['wap-nav-bar', border ? 'wap-nav-bar-border' : '']" v-if="!hidebar">        <div class="wap-nav-bar__left">            <a href="/wap/">                <img class="logo" src="https://t1.chei.com.cn/yz/wap/assets/images/index/logo.png" alt="研招网">            </a>            <template v-if="secondTitleHtml">                <span class="logo-dot"></span>                <span class="logo-text" v-html="secondTitleHtml"></span>            </template>        </div>        <div class="wap-nav-bar__right">            <div class="nav-search">                <span v-if="showKf" @click="location.assign(kfUrl)">                    <slot name="kf-icon">                        <img src="https://t1.chei.com.cn/common/images/wap-icon/nav-kf.svg">                    </slot>                </span>                <span v-if="showUser" @click="location.assign(userUrl)">                    <slot name="user-icon">                        <img src="https://t1.chei.com.cn/common/images/wap-icon/nav-user.svg">                    </slot>                </span>                <span @click="showSearch = true;">                    <slot name="search-icon">                        <img src="https://t2.chei.com.cn/common/images/icon-search-wap.svg">                    </slot>                </span>                <span @click="showNav = true;">                    <slot name="nav-icon">                        <img src="https://t1.chei.com.cn/common/images/wap-icon/nav-menu.svg">                    </slot>                    <div ref="yzpopup" class="ch-common-nav-popup">                        <template v-if="showNav">                            <div class="ch-van-overlay" @click="showNav = false;" style="z-index: 2001;"></div>                            <div class="van-popup van-popup--center" style="z-index: 2002;">                                <div class="close-bar">                                    <a href="/wap/"><img src="https://t1.chei.com.cn/yz/wap/assets/images/index/logo.png" alt="研招网" class="logo"></a>                                    <img src="https://t1.chei.com.cn/common/images/wap-icon/nav-close.svg" @click="showNav = false;" style="width: .64rem;display: block">                                </div>                                <div class="yz-row-list">                                    <div class="van-row" v-for="nav in navList">                                    <div class="yz-top-navlist-item" v-if="!nav.href">                                        <span class="yz-top-navlist-title">{{nav.name}}</span>                                    </div>                                    <div class="yz-top-navlist-item" v-else="">                                        <span class="yz-top-navlist-title">{{nav.name}}</span>                                        <a class="yz-top-navlist-link" :href="isWap ? nav.wapHref : nav.href" :target="isWap ? '' : '_blank'" @mousedown="gaTrackerOutboundLink({ eventCategory: 'wap-二级导航', eventAction: 'click', eventLabel: nav.name })">                                            <img src="https://t1.chei.com.cn/common/images/wap-icon/nav-next.svg" style="width: .4rem;display: block">                                        </a>                                    </div>                                    <div class="yz-top-navlist-content" v-if="nav.child &amp;&amp; nav.child.length>0">                                        <a v-for="item in nav.child" :href="isWap ? item.wapHref : item.href" :target="isWap ? '' : '_blank'" @mousedown="gaTrackerOutboundLink({ eventCategory: 'wap-二级导航', eventAction: 'click', eventLabel: item.name })">{{ item.name }}</a>                                    </div>                                </div>                                </div>                            </div>                        </template>                        <template v-if="showSearch">                            <div class="ch-van-overlay ch-van-overlay-search" style="z-index: 2001"></div>                            <div class="van-popup van-popup--center" style="z-index: 2002">                                <form @submit.prevent="searchSubmit" ref="site-search-wap" class="site-search-wap" action="https://cn.bing.com/search" method="get">                                    <img @click="showSearch=false" src="https://t1.chei.com.cn/common/images/icon-back.svg" style="width: .533rem;display: block;margin-right: 0.24rem;">                                    <input type="hidden" class="realQuery" name="q" :value="searchValue + ' site:yz.chsi.com.cn'">                                    <input placeholder="" type="text" ref="seachInput" name="query" autocomplete="off" class="top-nav-search-input-wap" v-model.trim="searchValue" maxlength="100">                                    <button type="submit" class="top-nav-search-button-wap">搜索</button>                                </form>                            </div>                        </template>                    </div>                </span>            </div>            <slot></slot>        </div>    </div></template>
-<script>    Vue.component('wapNavBar', {        props: {            hidebar: {                type: Boolean,                default: false            },            secondTitle: {                type: String,                default: ''            },            showUser: {                type: Boolean,                default: true            },            showKf: {                type: Boolean,                default: false            },            kfUrl: {                type: String,                default: ''            },            userUrl: {                type: String,                default: '/user/center.jsp'            },            border: {                type: Boolean,                default: true            }        },        data: function(){            return {                showNav: false,                showSearch: false,                isWap: typeof wapFn != 'undefined' ? wapFn() : true,                searchValue: '',                navList: [                    {                        name: '资讯',                        child: [                            {                                name: '国家政策',                                wapHref: '/kyzx/zcdh/',                                href: '/kyzx/zcdh/'                            },                            {                                name: '教育部政策',                                wapHref: '/kyzx/jybzc/',                                href: '/kyzx/jybzc/'                            },                            {                                name: '院校政策',                                wapHref: '/kyzx/yxzc/',                                href: '/kyzx/yxzc/'                            },                            {                                name: '信息公告',                                wapHref: '/wap/xxgg/',                                href: '/zsb/listSchoolBySsdm--Ssdm-11.dhtml/'                            },                            {                                name: '考研资讯',                                wapHref: '/kyzx/kydt/',                                href: '/kyzx/kydt/'                            },                            {                                name: '管理类专硕',                                wapHref: 'https://yz.chsi.com.cn/yzzt/glllk',                                href: 'https://yz.chsi.com.cn/yzzt/glllk'                            },                            {                                name: '研招访谈',                                wapHref: 'https://yz.chsi.com.cn/yzzt/zbft',                                href: 'https://yz.chsi.com.cn/yzzt/zbft'                            },                            {                                name: '复试备考',                                wapHref: '/kyzx/fstj/',                                href: '/kyzx/fstj/'                            }                        ]                    },                    {                        name: '信息库',                        child: [                            {                                name: '院校库',                                wapHref: '/wap/sch/',                                href: '/sch/'                            },                            {                                name: '招生简章',                                wapHref: '/kyzx/zsjz/',                                href: '/kyzx/zsjz/'                            },                            {                                name: '专业库',                                fullName: '专业知识库',                                wapHref: '/wap/zyk/',                                href: '/zyk/'                            },                            {                                name: '专业学位',                                wapHref: 'https://yz.chsi.com.cn/kyzx/zt/zsxz.shtml',                                href: 'https://yz.chsi.com.cn/kyzx/zt/zsxz.shtml'                            }                        ]                    },                    {                        name: '硕士',                        child: [                            {                                name: '在线咨询',                                wapHref: '/wap/zxdy/',                                href: '/zxdy/'                            },                            {                                name: '成绩查询',                                wapHref: '/apply/cjcx/',                                href: '/apply/cjcx/'                            },                            {                                name: '复试调剂',                                wapHref: '/wap/yztj/',                                href: '/yztj/'                            },                            {                                name: '信息公开',                                wapHref: '/zsgs/',                                href: '/zsgs/'                            },                            {                                name: '推免服务系统',                                wapHref: '/tm/',                                href: '/tm/'                            },                            {                                name: '硕士目录',                                wapHref: '/zsml/',                                href: '/zsml/'                            },                            {                                name: '网报公告',                                wapHref: '/sswbgg/',                                href: '/sswbgg/'                            },                            {                                name: '统考网报',                                wapHref: '/wap/yzwb/',                                href: '/yzwb/'                            },                            {                                name: '网上确认',                                wapHref: '/wsqr/stu/',                                href: '/wsqr/stu/'                            },                            {                                name: '远程面试',                                wapHref: 'https://bm.chsi.com.cn/ycms/stu/',                                href: 'https://bm.chsi.com.cn/ycms/stu/'                            }                        ]                    },                    {                        name: '博士',                        child: [                            {                                name: '博士目录',                                wapHref: '/bsmlcx/',                                href: '/bsmlcx/'                            },                            {                                name: '博士网报',                                wapHref: '/bsbm/',                                href: '/bsbm/'                            }                        ]                    },                    {                        name: '帮助中心',                        child: [                            {                                name: '统考硕士招生',                                wapHref: '/wap/help/',                                href: '/help/'                            },                            {                                name: '推免生招生',                                wapHref: '/wap/help/?systemId=yz_tm',                                href: '/help/tm.jsp'                            },                            {                                name: '博士生招生',                                wapHref: '/wap/help/?systemId=yz_bs',                                href: '/help/bs.jsp'                            }                        ]                    },                    {                        name: '专题',                        child: [                            {                                name: '专题汇总',                                wapHref: '/wap/zthz/',                                href: '/wap/zthz/'                            }                        ]                    }                ]            }        },        methods: {            gaTrackerOutboundLink: function(params) { //ga链接埋点                gtag('event', params.eventAction, {                    'event_category': params.eventCategory,                    'event_label': params.eventLabel                });                return true;            },            searchSubmit: function() {                if (!this.searchValue) {                    alert("请输入关键词");                    return;                }                this.$refs['site-search-wap'].submit();            },            findMatchingNavItem: function(list, title) {                var _this = this;                for (var i = 0, len = list.length; i < len; i++) {                    var item = list[i];                    if (item.name === title || item.fullName === title) return item;
-                    if (item.child && item.child.length) {                        var foundChild = _this.findMatchingNavItem(item.child, title);                        if (foundChild) return foundChild;                    }                }                return null;            }        },        computed: {            secondTitleHtml: function () {                var str = this.secondTitle;                if (str) {                    var found = this.findMatchingNavItem(this.navList, str);                    if (found) {                        str = '<a href="' + (this.isWap ? found.wapHref : found.href) + '">' + (found.fullName || found.name) + '</a>';                    }                }                return str;            }        },        mounted: function () {            document.addEventListener("touchstart", function(){}, true);            var popDom = this.$refs.yzpopup;            document.body.append(popDom);        },        watch: {            showNav: function(val) {                if (val) {                    document.body.classList.add('van-overflow-hidden');                } else {                    document.body.classList.remove('van-overflow-hidden');                }            },            showSearch: function(val) {                var _this = this;                if (val) {                    document.body.classList.add('van-overflow-hidden');                    this.$nextTick(function(){                        _this.$refs.seachInput.focus();                    });                } else {                    document.body.classList.remove('van-overflow-hidden');                }            },        },        template: '#nav-bar-template'    });</script>    <script type="text/javascript">        // 获取url中参数方法        function getUrlString(name) {            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");            var r = window.location.search.substr(1).match(reg);            if (r != null) return decodeURIComponent(r[2]); return null;        }        api.errorCallback = function (code, msg) {            // 当其他错误发生时，弹出提示层            setTimeout(function () {                vmMain.$dialog.alert({                    title: '提示',                    message: msg,                    confirmButtonText: '确定'                }).then(function() {                    vmMain.$dialog.close();                });;            }, 500);        };        vant.Dialog.setDefaultOptions({            confirmButtonText: '确定'        });        var vmMain = new Vue({            el: '#app',            mixins: typeof mixin != 'undefined' ? [mixin] : {},            data: function () {                return {                    str: '',                    prefix: 'yzwb_',                    formErrors: [],                    hidebar: false, //隐藏吊顶 true 隐藏， false 展示                    iframed: false //页面是否被iframe                }            },            methods: {                judgeIframe: function () {                    if (self != top) {                        this.iframed = true;                    }                },                setError: function () {  //页面错误回显                    for (var i = 0; i < this.formErrors.length; i++) {                        if (this.formErrors[i].name=='') {                            this.str += this.formErrors[i].message + '<br>';                        } else {                            this.str += this.formErrors[i].message + '<br>';                            this.errors.add(this.prefix+this.formErrors[i].name,this.formErrors[i].message)                        }                    }                    this.setglogalError();                },                setglogalError: function () { //全局错误弹出                    if(this.str !== ""){                        this.$dialog.alert({                            title: '提示',                            message: this.str,                            confirmButtonText: '关闭'                        });                    }                },                removePageLoading: function () {                    document.getElementById("appLoading").style.display = "none";                },                repForm: function () {                    var _obj = this.$refs['form'].children;                    for (var i = 0; i < _obj.length; i++) {                        // _obj[i].value =  repenter(rep(_obj[i].value.trim()));                        _obj[i].value = _obj[i].value.trim();                    }                },                limitLength: function (value, byteLength, target, title) {                    var newvalue = value.replace(/[^\x00-\xff]/g, "**"), //匹配双字节字符，计算长度                        _length = newvalue.length;                    if (byteLength<_length) {                        this.errors.add(target,title + "最大输入" + byteLength + "个字节（相当于" + byteLength / 2 + "个汉字）！");                    }                },                changeQuot: function(target,value) { //输入引号自动转化成全角                    // this[target] = value.replace(/\'/g,"＇").replace(/\"/g,"＂");                },                delSpace: function(target,value) { //去除学历和学位的空格                    this[target] = value.replace(/\s/g,"");                    this.changeQuot(target,value);                },                submit: function () {                    var _this =this;                    this.$validator.validateAll().then(function(result){                        if (result) {                            _this.repForm();                            _this.$nextTick().then(function(){                                if (typeof _this.validateAllMsg === 'function') {                                    if (_this.validateAllMsg().list.length > 0 ) {                                        var str = '';                                        for (var i = 0; i < _this.validateAllMsg().list.length; i++) {                                            str += _this.validateAllMsg().list[i] + '<br>';                                        }                                        if (_this.validateAllMsg().type === '一般') {                                            _this.$dialog.confirm({                                                title: '提示',                                                message: str,                                                confirmButtonText: '继续提交',                                                cancelButtonText: '返回修改'                                            }).then(function(){                                                _this.$dialog.close();                                                _this.$refs['form'].submit();                                            }).catch(function(){                                                _this.$dialog.close();                                            });                                        } else {                                            _this.$dialog.alert({                                                title: '错误',                                                message: str,                                                confirmButtonText: '返回修改'                                            }).then(function(){                                                _this.$dialog.close();                                            });                                        }                                    } else {                                        _this.$refs['form'].submit();                                    }                                } else {                                    _this.$refs['form'].submit();                                }                            });                        } else {                            window.scrollTo(0,document.getElementsByName(_this.errors.items[0].field)[0].getBoundingClientRect().top+document.documentElement.scrollTop-20)                        }                    })                }            },            mounted: function () {                this.setError();                this.judgeIframe();                if (getUrlString('hidebar') == 'true') {                    this.hidebar = true;                }                var baiduRegex = /swan\//;                if (baiduRegex.test(navigator.userAgent.toLowerCase())) {                    this.hidebar = true;                }            }        });    </script><div class="ch-common-nav-popup"><!----> <!----></div>
+
+                // 应用水印背景（ES5字符串拼接）
+                var watermarkBase64 = canvas.toDataURL("image/png");
+                this.watermarkDom.style.backgroundImage = "url(" + watermarkBase64 + ")";
+                this.watermarkDom.style.backgroundRepeat = "repeat";
+                this.watermarkDom.style.backgroundPosition = "0 0";
+                this.watermarkDom.style.backgroundSize = canvasWidth + "px " + canvasHeight + "px";
+            },
+
+            // 绘制自动换行文字（纯ES5）
+            drawWrappedText: function(ctx, text, x, y, maxWidth, lineHeight) {
+                var words = text.split('');
+                var line = '';
+                var lines = [];
+                var i, testLine, metrics, testWidth;
+
+                // 逐字添加并检查宽度
+                for (i = 0; i < words.length; i++) {
+                    testLine = line + words[i];
+                    metrics = ctx.measureText(testLine);
+                    testWidth = metrics.width;
+
+                    if (testWidth > maxWidth && i > 0) {
+                        lines.push(line);
+                        line = words[i];
+                    } else {
+                        line = testLine;
+                    }
+                }
+                lines.push(line);
+
+                // 计算总高度并居中绘制
+                var totalHeight = lines.length * lineHeight;
+                var startY = y - totalHeight / 2;
+                var j;
+
+                for (j = 0; j < lines.length; j++) {
+                    ctx.fillText(lines[j], x, startY + j * lineHeight);
+                }
+            },
+
+            // 绘制缩放文字（纯ES5）
+            drawScaledText: function(ctx, text, x, y, maxWidth) {
+                var metrics = ctx.measureText(text);
+                var textWidth = metrics.width;
+
+                if (textWidth > maxWidth) {
+                    var scaleFactor = maxWidth / textWidth;
+                    ctx.save();
+                    ctx.scale(scaleFactor, scaleFactor);
+                    ctx.fillText(text, x / scaleFactor, y / scaleFactor);
+                    ctx.restore();
+                } else {
+                    ctx.fillText(text, x, y);
+                }
+            },
+
+            // 绘制截断文字（纯ES5）
+            drawTruncatedText: function(ctx, text, x, y, maxWidth) {
+                var metrics = ctx.measureText(text);
+                var textWidth = metrics.width;
+
+                if (textWidth > maxWidth) {
+                    var truncatedText = text;
+                    var ellipsis = '...';
+                    var ellipsisWidth = ctx.measureText(ellipsis).width;
+
+                    // 逐字减少直到适合
+                    while (ctx.measureText(truncatedText).width + ellipsisWidth > maxWidth && truncatedText.length > 0) {
+                        truncatedText = truncatedText.slice(0, -1);
+                    }
+
+                    ctx.fillText(truncatedText + ellipsis, x, y);
+                } else {
+                    ctx.fillText(text, x, y);
+                }
+            },
+
+            // 监听水印防篡改（纯ES5）
+            observeWatermark: function() {
+                var _this = this;
+
+                if (window.MutationObserver) {
+                    this.watermarkObserver = new MutationObserver(function(mutations) {
+                        mutations.forEach(function(mutation) {
+                            var isWatermarkRemoved = false;
+                            var isWatermarkHidden = false;
+
+                            // 检查水印是否被删除
+                            if (mutation.type === 'childList') {
+                                [].forEach.call(mutation.removedNodes, function(node) {
+                                    if (node === _this.watermarkDom) {
+                                        isWatermarkRemoved = true;
+                                    }
+                                });
+                            }
+
+                            // 检查水印是否被隐藏
+                            if (mutation.type === 'attributes' && mutation.target === _this.watermarkDom) {
+                                if (_this.watermarkDom.style.display === 'none' || _this.watermarkDom.style.visibility === 'hidden') {
+                                    isWatermarkHidden = true;
+                                }
+                            }
+
+                            if (isWatermarkRemoved || isWatermarkHidden) {
+                                _this.destroyWatermark();
+                                _this.initWatermark();
+                            }
+                        });
+                    });
+
+                    // 监听目标容器的变化
+                    var observerTarget = _this.isFullscreen ? document.body : _this.watermarkDom.parentElement;
+                    this.watermarkObserver.observe(observerTarget, {
+                        childList: true,
+                        attributes: true,
+                        subtree: true
+                    });
+                }
+            },
+
+            // 监听目标元素尺寸变化（兼容ES5）
+            observeTargetElementSize: function(target) {
+                var _this = this;
+
+                // 使用ResizeObserver监听元素尺寸变化
+                if (window.ResizeObserver) {
+                    this.resizeObserver = new ResizeObserver(function(entries) {
+                        _this.generateWatermark();
+                    });
+                    this.resizeObserver.observe(target);
+                } else {
+                    // 降级方案：使用MutationObserver监听样式变化
+                    if (window.MutationObserver) {
+                        this.targetElementObserver = new MutationObserver(function(mutations) {
+                            _this.generateWatermark();
+                        });
+
+                        this.targetElementObserver.observe(target, {
+                            attributes: true,
+                            attributeFilter: ['style', 'class']
+                        });
+                    }
+                }
+            },
+
+            // 窗口大小变化处理
+            handleResize: function() {
+                this.generateWatermark();
+            },
+
+            // 销毁水印（清理所有资源）
+            destroyWatermark: function() {
+                // 断开所有观察者
+                if (this.watermarkObserver) {
+                    this.watermarkObserver.disconnect();
+                    this.watermarkObserver = null;
+                }
+                if (this.targetElementObserver) {
+                    this.targetElementObserver.disconnect();
+                    this.targetElementObserver = null;
+                }
+                if (this.resizeObserver) {
+                    this.resizeObserver.disconnect();
+                    this.resizeObserver = null;
+                }
+
+                // 移除DOM节点
+                if (this.watermarkDom && this.watermarkDom.parentNode) {
+                    this.watermarkDom.parentNode.removeChild(this.watermarkDom);
+                    this.watermarkDom = null;
+                }
+            }
+        }
+    });
+</script>
+
+    <!-- 引入脚本 -->
+    <script type="text/javascript">
+    var mixin = {
+        data: function () {
+            return {
+                cj: {"bmh":"650698763","xm":"666","ksbh":"100286650600011","zjlx":"01","zjhm":"650103200403305549","bkdwdm":"10028","bkdwmc":"\u9996\u90FD\u5E08\u8303\u5927\u5B66","bkyxsm":"019","bkzydm":"135600","ksfsm":"21","zxjh":"0","zzllm":"101","zzllmc":"\u601D\u60F3\u653F\u6CBB\u7406\u8BBA","wgym":"204","wgymc":"\u82F1\u8BED\uFF08\u4E8C\uFF09","ywk1m":"763","ywk1mc":"\u827A\u672F\u5B66\u57FA\u7840","ywk2m":"842","ywk2mc":"\u4E66\u6CD5\u7684\u7406\u8BBA\u4E0E\u5B9E\u8DF5","zf":"294","zzll":"55","wgy":"68","ywk1":"97","ywk2":"74","bz":"\u65E0","km1":"(101)\u601D\u60F3\u653F\u6CBB\u7406\u8BBA\uFF1A55","km2":"(204)\u82F1\u8BED\uFF08\u4E8C\uFF09\uFF1A68","km3":"(763)\u827A\u672F\u5B66\u57FA\u7840\uFF1A97","km4":"(842)\u4E66\u6CD5\u7684\u7406\u8BBA\u4E0E\u5B9E\u8DF5\uFF1A74","zsdwsm":"\u8BF7\u8003\u751F\u767B\u5F55\u9996\u90FD\u5E08\u8303\u5927\u5B66\u7814\u7A76\u751F\u9662\u7F51\u7AD9\uFF08https:\/\/grad.cnu.edu.cn\uFF09\u67E5\u770B\u300A\u9996\u90FD\u5E08\u8303\u5927\u5B66\u5173\u4E8E2026\u5E74\u5168\u56FD\u7855\u58EB\u7814\u7A76\u751F\u62DB\u751F\u8003\u8BD5\uFF08\u521D\u8BD5\uFF09\u6210\u7EE9\u67E5\u8BE2\u53CA\u6210\u7EE9\u590D\u6838\u7B49\u5DE5\u4F5C\u7684\u901A\u77E5\u300B\u3002","yzm":"06205904"},
+                cxlsh: "030112051544106205904",
+                msg: null,
+                bkdwmc: "\u9996\u90FD\u5E08\u8303\u5927\u5B66" || '中国研究生招生信息网',
+            }
+        },
+        methods: {
+
+        },
+        mounted: function () {
+            // 谷歌埋点数据采集
+            var eventLabel = 'wap-3-login-other';
+            var baiduRegex = /swan\//,
+                weixinRegex = /micromessenger/;
+            if (baiduRegex.test(navigator.userAgent.toLowerCase())) {
+                eventLabel = 'wap-3-login-swan';
+            }
+            if (weixinRegex.test(navigator.userAgent.toLowerCase())) {
+                eventLabel = 'wap-3-login-wx';
+            }
+            gtag('event', 'load', {
+                'event_category': 'cjcx',
+                'event_label': eventLabel
+            });
+        }
+    }
+</script>
+    <style>
+    .wap-nav-bar {
+        position: relative;
+        z-index: 1;
+        height: 1.173rem;
+        display: flex;
+        align-items: center;
+        background: #fff;
+    }
+    .wap-nav-bar-border:after {
+        position: absolute;
+        box-sizing: border-box;
+        content: " ";
+        pointer-events: none;
+        top: -50%;
+        right: -50%;
+        bottom: -50%;
+        left: -50%;
+        border-bottom: 1px solid #D5D7DB;
+        transform: scale(.5);
+    }
+    .wap-nav-bar .wap-nav-bar__left {
+        position: absolute;
+        left: 0;
+        display: flex;
+        align-items: center;
+        padding: 0 0.427rem;
+    }
+    .wap-nav-bar .logo {
+        display: block;
+        width: 2.87rem;
+    }
+    .wap-nav-bar .wap-nav-bar__right {
+        position: absolute;
+        right: 0;
+        display: flex;
+        align-items: center;
+        padding: 0 0.427rem;
+        line-height: 1;
+    }
+    .logo-text {
+        font-size: 0.373rem;
+        color: #65696E;
+    }
+    .logo-text a {
+        color: #2B2E33;
+    }
+    .logo-dot {
+        display: block;
+        width: 0.027rem;
+        height: 0.533rem;
+        background: #E8EAED;
+        margin: 0 0.213rem;
+    }
+    .van-overflow-hidden {
+        overflow: hidden !important;
+    }
+    .ch-common-nav-popup .van-popup {
+        position: fixed;
+        width: 100%;
+        max-width: 750px;
+        margin: 0 auto;
+        max-height: 100%;
+        overflow-y: auto;
+        background-color: #fff;
+        transition: transform .3s;
+        -webkit-overflow-scrolling: touch
+    }
+    .ch-van-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .7)
+    }
+    .ch-common-nav-popup .van-popup--center {
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+    }
+    .ch-common-nav-popup .close-bar {
+        position: sticky;
+        top: 0;
+        height: 1.173rem;
+        padding: 0 .427rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #fff;
+    }
+    .close-bar::after{
+        position: absolute;
+        box-sizing: border-box;
+        content: " ";
+        pointer-events: none;
+        top: -50%;
+        right: -50%;
+        bottom: -50%;
+        left: -50%;
+        border-bottom: 1px solid #D5D7DB;
+        transform: scale(.5);
+    }
+    .close-bar .logo {
+        display: block;
+        width: 2.87rem;
+    }
+    .ch-common-nav-popup .ch-van-overlay {
+        top: 0;
+        left: auto;
+        max-width: 750px;
+        margin: 0 auto
+    }
+    .ch-common-nav-popup .van-popup {
+        top: 0;
+        left: auto;
+    }
+    .ch-common-nav-popup .van-popup::after {
+        position: absolute;
+        box-sizing: border-box;
+        content: " ";
+        pointer-events: none;
+        top: -50%;
+        right: -50%;
+        bottom: -50%;
+        left: -50%;
+        border: 0 solid #E8EAED;
+        transform: scale(.5);
+        border-top-width: 1px;
+        border-color: #D5D7DB;
+    }
+    .ch-common-nav-popup .van-popup--center {
+        transform: none
+    }
+    .yz-top-navlist-item {
+        font-size: 0.43rem;
+        font-weight: 700;
+        color: #2B2E33;
+        line-height: 0.64rem;
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.32rem;
+    }
+    .yz-top-navlist-title {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+    .yz-top-navlist-title::before {
+        display: block;
+        content: '';
+        width: 0.08rem;
+        height: 0.4rem;
+        background: #1887E0;
+        border-radius: 0.04rem;
+        margin-right: 0.13rem;
+    }
+    .yz-top-navlist-content {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        padding-bottom: 0.26rem;
+    }
+    .yz-top-navlist-content a {
+        display: block;
+        width: calc( (100% - 0.58rem) / 3 );
+        text-align: center;
+        height: 0.8rem;
+        line-height: 0.8rem;
+        border-radius: 0.11rem;
+        margin-bottom: 0.27rem;
+        margin-right: 0.29rem;
+        font-size: 0.37rem;
+        color: #2B2E33;
+        background: #F7F8FA;
+        text-decoration: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .yz-top-navlist-content a:active{
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+    .yz-top-navlist-content a:nth-child(3n) {
+        margin-right: 0;
+    }
+    a.yz-top-navlist-link {
+        display: flex;
+        align-items: center;
+        font-size: 0.32rem;
+        font-weight: 400;
+        color: #93989E;
+        line-height: 0.44rem;
+    }
+    a.yz-top-navlist-link:active{
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+    .yz-row-list{
+        padding: 0.35rem 0.43rem;
+    }
+    .nav-search {
+        display: flex;
+        align-items: center;
+    }
+    .nav-search span + span {
+        margin-left: 0.32rem;
+    }
+    .nav-search img {
+        display: block;
+        width: .64rem;
+    }
+    .ch-van-overlay-search {
+        background: #fff;
+    }
+    .site-search-wap {
+        display: flex;
+        align-items: center;
+        height: 1.173rem;
+        background: #F7F8FA;
+        padding: 0 0.427rem 0 0.24rem;
+    }
+    .top-nav-search-button-wap {
+        outline: none;
+        background: none;
+        border: none;
+        font-size: 0.373rem;
+        padding: 0;
+        margin-left: 0.32rem;
+        color: #2B2E33;
+    }
+    .top-nav-search-input-wap {
+        flex: 1;
+        border: 1px solid #D5D7DB;
+        height: 0.78rem;
+        background: #FFF url("https://t2.chei.com.cn/common/images/icon-search-wap.svg") left 0.21rem center no-repeat;
+        background-size: auto 0.533rem;
+        border-radius: 0.11rem;
+        outline: none;
+        padding: 0 0.21rem 0 0.88rem;
+        box-sizing: border-box;
+    }
+</style>
+
+<template id="nav-bar-template">
+    <div :class="['wap-nav-bar', border ? 'wap-nav-bar-border' : '']" v-if="!hidebar">
+        <div class="wap-nav-bar__left">
+            <a href="/wap/">
+                <img class="logo" src="https://t1.chei.com.cn/yz/wap/assets/images/index/logo.png" alt="研招网">
+            </a>
+            <template v-if="secondTitleHtml">
+                <span class="logo-dot"></span>
+                <span class="logo-text" v-html="secondTitleHtml"></span>
+            </template>
+        </div>
+        <div class="wap-nav-bar__right">
+            <div class="nav-search">
+                <span v-if="showKf" @click="location.assign(kfUrl)">
+                    <slot name="kf-icon">
+                        <img src="https://t1.chei.com.cn/common/images/wap-icon/nav-kf.svg">
+                    </slot>
+                </span>
+                <span v-if="showUser" @click="location.assign(userUrl)">
+                    <slot name="user-icon">
+                        <img src="https://t1.chei.com.cn/common/images/wap-icon/nav-user.svg">
+                    </slot>
+                </span>
+                <span @click="showSearch = true;">
+                    <slot name="search-icon">
+                        <img src="https://t2.chei.com.cn/common/images/icon-search-wap.svg">
+                    </slot>
+                </span>
+                <span @click="showNav = true;">
+                    <slot name="nav-icon">
+                        <img src="https://t1.chei.com.cn/common/images/wap-icon/nav-menu.svg">
+                    </slot>
+                    <div ref="yzpopup" class="ch-common-nav-popup">
+                        <template v-if="showNav">
+                            <div class="ch-van-overlay" @click="showNav = false;" style="z-index: 2001;"></div>
+                            <div class="van-popup van-popup--center" style="z-index: 2002;">
+                                <div class="close-bar">
+                                    <a href="/wap/"><img src="https://t1.chei.com.cn/yz/wap/assets/images/index/logo.png" alt="研招网" class="logo"></a>
+                                    <img src="https://t1.chei.com.cn/common/images/wap-icon/nav-close.svg" @click="showNav = false;" style="width: .64rem;display: block">
+                                </div>
+                                <div class="yz-row-list">
+                                    <div class="van-row" v-for="nav in navList">
+                                    <div class="yz-top-navlist-item" v-if="!nav.href">
+                                        <span class="yz-top-navlist-title">{{nav.name}}</span>
+                                    </div>
+                                    <div class="yz-top-navlist-item" v-else="">
+                                        <span class="yz-top-navlist-title">{{nav.name}}</span>
+                                        <a class="yz-top-navlist-link" :href="isWap ? nav.wapHref : nav.href" :target="isWap ? '' : '_blank'" @mousedown="gaTrackerOutboundLink({ eventCategory: 'wap-二级导航', eventAction: 'click', eventLabel: nav.name })">
+                                            <img src="https://t1.chei.com.cn/common/images/wap-icon/nav-next.svg" style="width: .4rem;display: block">
+                                        </a>
+                                    </div>
+                                    <div class="yz-top-navlist-content" v-if="nav.child &amp;&amp; nav.child.length>0">
+                                        <a v-for="item in nav.child" :href="isWap ? item.wapHref : item.href" :target="isWap ? '' : '_blank'" @mousedown="gaTrackerOutboundLink({ eventCategory: 'wap-二级导航', eventAction: 'click', eventLabel: item.name })">{{ item.name }}</a>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </template>
+                        <template v-if="showSearch">
+                            <div class="ch-van-overlay ch-van-overlay-search" style="z-index: 2001"></div>
+                            <div class="van-popup van-popup--center" style="z-index: 2002">
+                                <form @submit.prevent="searchSubmit" ref="site-search-wap" class="site-search-wap" action="https://cn.bing.com/search" method="get">
+                                    <img @click="showSearch=false" src="https://t1.chei.com.cn/common/images/icon-back.svg" style="width: .533rem;display: block;margin-right: 0.24rem;">
+                                    <input type="hidden" class="realQuery" name="q" :value="searchValue + ' site:yz.chsi.com.cn'">
+                                    <input placeholder="" type="text" ref="seachInput" name="query" autocomplete="off" class="top-nav-search-input-wap" v-model.trim="searchValue" maxlength="100">
+                                    <button type="submit" class="top-nav-search-button-wap">搜索</button>
+                                </form>
+                            </div>
+                        </template>
+                    </div>
+                </span>
+            </div>
+            <slot></slot>
+        </div>
+    </div>
+</template>
+
+<script>
+    Vue.component('wapNavBar', {
+        props: {
+            hidebar: {
+                type: Boolean,
+                default: false
+            },
+            secondTitle: {
+                type: String,
+                default: ''
+            },
+            showUser: {
+                type: Boolean,
+                default: true
+            },
+            showKf: {
+                type: Boolean,
+                default: false
+            },
+            kfUrl: {
+                type: String,
+                default: ''
+            },
+            userUrl: {
+                type: String,
+                default: '/user/center.jsp'
+            },
+            border: {
+                type: Boolean,
+                default: true
+            }
+        },
+        data: function(){
+            return {
+                showNav: false,
+                showSearch: false,
+                isWap: typeof wapFn != 'undefined' ? wapFn() : true,
+                searchValue: '',
+                navList: [
+                    {
+                        name: '资讯',
+                        child: [
+                            {
+                                name: '国家政策',
+                                wapHref: '/kyzx/zcdh/',
+                                href: '/kyzx/zcdh/'
+                            },
+                            {
+                                name: '教育部政策',
+                                wapHref: '/kyzx/jybzc/',
+                                href: '/kyzx/jybzc/'
+                            },
+                            {
+                                name: '院校政策',
+                                wapHref: '/kyzx/yxzc/',
+                                href: '/kyzx/yxzc/'
+                            },
+                            {
+                                name: '信息公告',
+                                wapHref: '/wap/xxgg/',
+                                href: '/zsb/listSchoolBySsdm--Ssdm-11.dhtml/'
+                            },
+                            {
+                                name: '考研资讯',
+                                wapHref: '/kyzx/kydt/',
+                                href: '/kyzx/kydt/'
+                            },
+                            {
+                                name: '管理类专硕',
+                                wapHref: 'https://yz.chsi.com.cn/yzzt/glllk',
+                                href: 'https://yz.chsi.com.cn/yzzt/glllk'
+                            },
+                            {
+                                name: '研招访谈',
+                                wapHref: 'https://yz.chsi.com.cn/yzzt/zbft',
+                                href: 'https://yz.chsi.com.cn/yzzt/zbft'
+                            },
+                            {
+                                name: '复试备考',
+                                wapHref: '/kyzx/fstj/',
+                                href: '/kyzx/fstj/'
+                            }
+                        ]
+                    },
+                    {
+                        name: '信息库',
+                        child: [
+                            {
+                                name: '院校库',
+                                wapHref: '/wap/sch/',
+                                href: '/sch/'
+                            },
+                            {
+                                name: '招生简章',
+                                wapHref: '/kyzx/zsjz/',
+                                href: '/kyzx/zsjz/'
+                            },
+                            {
+                                name: '专业库',
+                                fullName: '专业知识库',
+                                wapHref: '/wap/zyk/',
+                                href: '/zyk/'
+                            },
+                            {
+                                name: '专业学位',
+                                wapHref: 'https://yz.chsi.com.cn/kyzx/zt/zsxz.shtml',
+                                href: 'https://yz.chsi.com.cn/kyzx/zt/zsxz.shtml'
+                            }
+                        ]
+                    },
+                    {
+                        name: '硕士',
+                        child: [
+                            {
+                                name: '在线咨询',
+                                wapHref: '/wap/zxdy/',
+                                href: '/zxdy/'
+                            },
+                            {
+                                name: '成绩查询',
+                                wapHref: '/apply/cjcx/',
+                                href: '/apply/cjcx/'
+                            },
+                            {
+                                name: '复试调剂',
+                                wapHref: '/wap/yztj/',
+                                href: '/yztj/'
+                            },
+                            {
+                                name: '信息公开',
+                                wapHref: '/zsgs/',
+                                href: '/zsgs/'
+                            },
+                            {
+                                name: '推免服务系统',
+                                wapHref: '/tm/',
+                                href: '/tm/'
+                            },
+                            {
+                                name: '硕士目录',
+                                wapHref: '/zsml/',
+                                href: '/zsml/'
+                            },
+                            {
+                                name: '网报公告',
+                                wapHref: '/sswbgg/',
+                                href: '/sswbgg/'
+                            },
+                            {
+                                name: '统考网报',
+                                wapHref: '/wap/yzwb/',
+                                href: '/yzwb/'
+                            },
+                            {
+                                name: '网上确认',
+                                wapHref: '/wsqr/stu/',
+                                href: '/wsqr/stu/'
+                            },
+                            {
+                                name: '远程面试',
+                                wapHref: 'https://bm.chsi.com.cn/ycms/stu/',
+                                href: 'https://bm.chsi.com.cn/ycms/stu/'
+                            }
+                        ]
+                    },
+                    {
+                        name: '博士',
+                        child: [
+                            {
+                                name: '博士目录',
+                                wapHref: '/bsmlcx/',
+                                href: '/bsmlcx/'
+                            },
+                            {
+                                name: '博士网报',
+                                wapHref: '/bsbm/',
+                                href: '/bsbm/'
+                            }
+                        ]
+                    },
+                    {
+                        name: '帮助中心',
+                        child: [
+                            {
+                                name: '统考硕士招生',
+                                wapHref: '/wap/help/',
+                                href: '/help/'
+                            },
+                            {
+                                name: '推免生招生',
+                                wapHref: '/wap/help/?systemId=yz_tm',
+                                href: '/help/tm.jsp'
+                            },
+                            {
+                                name: '博士生招生',
+                                wapHref: '/wap/help/?systemId=yz_bs',
+                                href: '/help/bs.jsp'
+                            }
+                        ]
+                    },
+                    {
+                        name: '专题',
+                        child: [
+                            {
+                                name: '专题汇总',
+                                wapHref: '/wap/zthz/',
+                                href: '/wap/zthz/'
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        methods: {
+            gaTrackerOutboundLink: function(params) { //ga链接埋点
+                gtag('event', params.eventAction, {
+                    'event_category': params.eventCategory,
+                    'event_label': params.eventLabel
+                });
+                return true;
+            },
+            searchSubmit: function() {
+                if (!this.searchValue) {
+                    alert("请输入关键词");
+                    return;
+                }
+                this.$refs['site-search-wap'].submit();
+            },
+            findMatchingNavItem: function(list, title) {
+                var _this = this;
+                for (var i = 0, len = list.length; i < len; i++) {
+                    var item = list[i];
+                    if (item.name === title || item.fullName === title) return item;
+
+                    if (item.child && item.child.length) {
+                        var foundChild = _this.findMatchingNavItem(item.child, title);
+                        if (foundChild) return foundChild;
+                    }
+                }
+                return null;
+            }
+        },
+        computed: {
+            secondTitleHtml: function () {
+                var str = this.secondTitle;
+                if (str) {
+                    var found = this.findMatchingNavItem(this.navList, str);
+                    if (found) {
+                        str = '<a href="' + (this.isWap ? found.wapHref : found.href) + '">' + (found.fullName || found.name) + '</a>';
+                    }
+                }
+                return str;
+            }
+        },
+        mounted: function () {
+            document.addEventListener("touchstart", function(){}, true);
+            var popDom = this.$refs.yzpopup;
+            document.body.append(popDom);
+        },
+        watch: {
+            showNav: function(val) {
+                if (val) {
+                    document.body.classList.add('van-overflow-hidden');
+                } else {
+                    document.body.classList.remove('van-overflow-hidden');
+                }
+            },
+            showSearch: function(val) {
+                var _this = this;
+                if (val) {
+                    document.body.classList.add('van-overflow-hidden');
+                    this.$nextTick(function(){
+                        _this.$refs.seachInput.focus();
+                    });
+                } else {
+                    document.body.classList.remove('van-overflow-hidden');
+                }
+            },
+        },
+        template: '#nav-bar-template'
+    });
+</script>
+    <script type="text/javascript">
+        // 获取url中参数方法
+        function getUrlString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return decodeURIComponent(r[2]); return null;
+        }
+        api.errorCallback = function (code, msg) {
+            // 当其他错误发生时，弹出提示层
+            setTimeout(function () {
+                vmMain.$dialog.alert({
+                    title: '提示',
+                    message: msg,
+                    confirmButtonText: '确定'
+                }).then(function() {
+                    vmMain.$dialog.close();
+                });;
+            }, 500);
+        };
+        vant.Dialog.setDefaultOptions({
+            confirmButtonText: '确定'
+        });
+        var vmMain = new Vue({
+            el: '#app',
+            mixins: typeof mixin != 'undefined' ? [mixin] : {},
+            data: function () {
+                return {
+                    str: '',
+                    prefix: 'yzwb_',
+                    formErrors: [],
+                    hidebar: false, //隐藏吊顶 true 隐藏， false 展示
+                    iframed: false //页面是否被iframe
+                }
+            },
+            methods: {
+                judgeIframe: function () {
+                    if (self != top) {
+                        this.iframed = true;
+                    }
+                },
+                setError: function () {  //页面错误回显
+                    for (var i = 0; i < this.formErrors.length; i++) {
+                        if (this.formErrors[i].name=='') {
+                            this.str += this.formErrors[i].message + '<br>';
+                        } else {
+                            this.str += this.formErrors[i].message + '<br>';
+                            this.errors.add(this.prefix+this.formErrors[i].name,this.formErrors[i].message)
+                        }
+                    }
+                    this.setglogalError();
+                },
+                setglogalError: function () { //全局错误弹出
+                    if(this.str !== ""){
+                        this.$dialog.alert({
+                            title: '提示',
+                            message: this.str,
+                            confirmButtonText: '关闭'
+                        });
+                    }
+                },
+                removePageLoading: function () {
+                    document.getElementById("appLoading").style.display = "none";
+                },
+                repForm: function () {
+                    var _obj = this.$refs['form'].children;
+                    for (var i = 0; i < _obj.length; i++) {
+                        // _obj[i].value =  repenter(rep(_obj[i].value.trim()));
+                        _obj[i].value = _obj[i].value.trim();
+                    }
+                },
+                limitLength: function (value, byteLength, target, title) {
+                    var newvalue = value.replace(/[^\x00-\xff]/g, "**"), //匹配双字节字符，计算长度
+                        _length = newvalue.length;
+                    if (byteLength<_length) {
+                        this.errors.add(target,title + "最大输入" + byteLength + "个字节（相当于" + byteLength / 2 + "个汉字）！");
+                    }
+                },
+                changeQuot: function(target,value) { //输入引号自动转化成全角
+                    // this[target] = value.replace(/\'/g,"＇").replace(/\"/g,"＂");
+                },
+                delSpace: function(target,value) { //去除学历和学位的空格
+                    this[target] = value.replace(/\s/g,"");
+                    this.changeQuot(target,value);
+                },
+                submit: function () {
+                    var _this =this;
+                    this.$validator.validateAll().then(function(result){
+                        if (result) {
+                            _this.repForm();
+                            _this.$nextTick().then(function(){
+                                if (typeof _this.validateAllMsg === 'function') {
+                                    if (_this.validateAllMsg().list.length > 0 ) {
+                                        var str = '';
+                                        for (var i = 0; i < _this.validateAllMsg().list.length; i++) {
+                                            str += _this.validateAllMsg().list[i] + '<br>';
+                                        }
+                                        if (_this.validateAllMsg().type === '一般') {
+                                            _this.$dialog.confirm({
+                                                title: '提示',
+                                                message: str,
+                                                confirmButtonText: '继续提交',
+                                                cancelButtonText: '返回修改'
+                                            }).then(function(){
+                                                _this.$dialog.close();
+                                                _this.$refs['form'].submit();
+                                            }).catch(function(){
+                                                _this.$dialog.close();
+                                            });
+                                        } else {
+                                            _this.$dialog.alert({
+                                                title: '错误',
+                                                message: str,
+                                                confirmButtonText: '返回修改'
+                                            }).then(function(){
+                                                _this.$dialog.close();
+                                            });
+                                        }
+                                    } else {
+                                        _this.$refs['form'].submit();
+                                    }
+                                } else {
+                                    _this.$refs['form'].submit();
+                                }
+                            });
+                        } else {
+                            window.scrollTo(0,document.getElementsByName(_this.errors.items[0].field)[0].getBoundingClientRect().top+document.documentElement.scrollTop-20)
+                        }
+                    })
+                }
+            },
+            mounted: function () {
+                this.setError();
+                this.judgeIframe();
+                if (getUrlString('hidebar') == 'true') {
+                    this.hidebar = true;
+                }
+                var baiduRegex = /swan\//;
+                if (baiduRegex.test(navigator.userAgent.toLowerCase())) {
+                    this.hidebar = true;
+                }
+            }
+        });
+    </script><div class="ch-common-nav-popup"><!----> <!----></div>
+
 
 </body></html>
