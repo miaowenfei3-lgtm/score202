@@ -140,21 +140,7 @@ var _hmt = _hmt || [];
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
 })();
-</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-100524-7"></script>
-<script>
-function gaTrackerOutboundLink(params) { //ga链接埋点
-    gtag('event', params.eventAction, {
-        'event_category': params.eventCategory,
-        'event_label': params.eventLabel
-    });
-    return true;
-};
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'UA-100524-7', {'sample_rate': 5});
-</script>
+
 <style class="huiyi-global">
     .huiyi-dialog-parent-no-scroll{
       overflow: hidden !important;
@@ -190,23 +176,7 @@ gtag('config', 'UA-100524-7', {'sample_rate': 5});
 <script type="text/javascript" src="https://t1.chei.com.cn/yz/apply/assets2021/js/ssList-1.0.4.min.js"></script>
 <script type="text/javascript" src="https://t3.chei.com.cn/yz/apply/assets2021/js/validator-1.0.1.min.js"></script>
 <script type="text/javascript" src="https://t3.chei.com.cn/common/js/api-1.0.4.js"></script>
-<script>
-    api.pollingOptions = {
-        resType: 'json',
-        taskUrl: '/apply/ajaxRs.do', //默认：''，不会进入轮询
-        pollingUrl: '/apply/asynProgress.do', //默认：''，不会进入轮询
-        pollingLimit: 10, // 请求的最大次数，默认：10次
-        pollingDelay: 1000, // 正常轮询时，请求延迟毫秒数，默认：1000毫秒
-        delayGaps: 300, // 轮询请求间隔递增毫秒数，默认：0毫秒（建议不要超过1000）
-    };
-    // api 统一配置
-    api.axiosConfig = {
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
-        }, // 其他为axios的配置-设置headers
-        timeout: 60000 // 其他为axios的配置-请求超时时间
-    };
-</script>
+
 
     <!-- 页面中额外js引入 -->
     
