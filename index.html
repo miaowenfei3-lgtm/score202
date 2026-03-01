@@ -1160,6 +1160,48 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             },
 
+            // 监听水印防篡改（纯ES5）
+            observeWatermark: function() {
+                var _this = this;
+
+                if (window.MutationObserver) {
+                    this.watermarkObserver = new MutationObserver(function(mutations) {
+                        mutations.forEach(function(mutation) {
+                            var isWatermarkRemoved = false;
+                            var isWatermarkHidden = false;
+
+                            // 检查水印是否被删除
+                            if (mutation.type === 'childList') {
+                                [].forEach.call(mutation.removedNodes, function(node) {
+                                    if (node === _this.watermarkDom) {
+                                        isWatermarkRemoved = true;
+                                    }
+                                });
+                            }
+
+                            // 检查水印是否被隐藏
+                            if (mutation.type === 'attributes' && mutation.target === _this.watermarkDom) {
+                                if (_this.watermarkDom.style.display === 'none' || _this.watermarkDom.style.visibility === 'hidden') {
+                                    isWatermarkHidden = true;
+                                }
+                            }
+
+                            if (isWatermarkRemoved || isWatermarkHidden) {
+                                _this.destroyWatermark();
+                                _this.initWatermark();
+                            }
+                        });
+                    });
+
+                    // 监听目标容器的变化
+                    var observerTarget = _this.isFullscreen ? document.body : _this.watermarkDom.parentElement;
+                    this.watermarkObserver.observe(observerTarget, {
+                        childList: true,
+                        attributes: true,
+                        subtree: true
+                    });
+                }
+            },
 
             // 监听目标元素尺寸变化（兼容ES5）
             observeTargetElementSize: function(target) {
