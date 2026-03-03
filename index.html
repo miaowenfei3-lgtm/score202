@@ -1,162 +1,1397 @@
-<!DOCTYPE html> <html data-dpr=1 style=font-size:38.56px><!--
- Page saved with SingleFile 
- url: https://yz.chsi.com.cn/apply/cjcxa/ 
- saved date: Mon Mar 02 2026 00:38:26 GMT+0800 (中国标准时间)
---><meta charset=utf-8>
-<title>全国硕士研究生招生考试部分考生初试成绩查询系统</title>
-<meta http-equiv=X-UA-Compatible content="IE=Edge,chrome=1">
-<meta name=viewport content="width=device-width,initial-scale=1.0">
-<meta name=format-detection content="telephone=no">
-<style>
-    /* 1. 终极绝杀：强行隐藏所有携带 Base64 乱码图片的图层（彻底消灭全屏大水印） */
-    div[style*="image/png;base64"], 
-    div[class*="watermark"] {
-        display: none !important;
-        opacity: 0 !important;
-        background-image: none !important;
-    }
 
-    /* 2. 锁定中间成绩单盒子，并限制水印不出界 */
-    .empty-title, .van-panel {
-        position: relative !important;
-        overflow: hidden !important;
-    }
+<!DOCTYPE html>
+<html>
+<head>
+    <title>全国硕士研究生招生考试部分考生初试成绩查询系统</title>
+    <meta content="text/html" charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    
+    <link rel="dns-prefetch" href="https://axvert.chsi.com.cn">
+    <link rel="dns-prefetch" href="https://t1.chei.com.cn">
+    <link rel="dns-prefetch" href="https://t2.chei.com.cn">
+    <link rel="dns-prefetch" href="https://t3.chei.com.cn">
+    <link rel="dns-prefetch" href="https://t4.chei.com.cn">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="shortcut icon" type="image/x-icon" href="https://t2.chei.com.cn/yz/favicon.ico">
+    <link rel="stylesheet" href="https://t2.chei.com.cn/common/ch/iconfont.css">
+    <link rel="stylesheet" href="https://t1.chei.com.cn/common/ch/chicon/iconfont.css">
+    <link rel="stylesheet" href="https://t2.chei.com.cn/yz/apply/assets2021/pc/css/app-1.0.6.css">
+    <link rel="stylesheet" href="https://t3.chei.com.cn/yz/assets/css/yz.min.css">
+    <style>
+        body.ch-sticky {
+            background: #fff;
+        }
+        .top-nav-wrapper .top-nav-list a {
+            box-sizing: content-box;
+        }
+        .ch-sticky .main-wrapper-org {
+            min-height: 100%
+        }
+        .ch-sticky .main-wrapper-org .container {
+            padding-bottom: 198px
+        }
+        table.ch-table td, table.ch-table th {
+            border: none;
+            border-bottom: 1px solid #e9e9e9;
+        }
+        table.ch-table td {
+            padding: 12px 10px;
+        }
+        /*样式修正*/
+        .wbgg-tab-wrapper .item-content .ch-select {
+            min-width: 140px;
+        }
+        .wbgg-list td a {
+            color: #1787e0;
+        }
+        .wbgg-list td {
+            color: #999;
+        }
+        .cjcx-box {
+            margin-top: 24px;
+            margin-bottom: 20px;
+            border: 1px solid #e5e5e5;
+            padding: 40px 82px;
+            position: relative;
+        }
+        .cjxx-info-title {
+            text-align: right;
+            width: 410px;
+            color: #999;
+            vertical-align: top;
+        }
+        .cjxx-info-content {
+            text-align: left;
+            padding-left: 10px;
+            vertical-align: top;
+            word-break: break-all;
+        }
+        .cjxx-info tr {
+            height: 36px
+        }
+        .cjxx-info tr.cjxx-info-cut {
+            height: 15px;
+        }
+        .cjcx-bz {
+            position: absolute;
+            width: 300px;
+            padding: 25px;
+            top: 48px;
+            right: 110px;
+            background: #f7f9fa;
+        }
+        .cjcx-bz-title {
+            font-size: 16px;
+            line-height: 1;
+            margin-bottom: 15px;
+            font-weight: 400;
+            color: #666;
+        }
+        .cjcx-bz-content {
+            text-indent: 0;
+            color: #666;
+            word-break: break-all;
+        }
+        .cjcx-bz-content .ch-paragraph14 {
+            margin-bottom: 0;
+        }
+        .cjcx-tip {
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        .cjcx-tip .ch-paragraph14 {
+            text-indent: 0;
+            color: #999;
+        }
+        .cjcx-noresult {
+            min-height: 70px;
+            color: #666;
+            font-size: 14px;
+        }
+        .cjcx-noresult .ch-btn {
+            margin-left: 5px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        .ch-alert {
+            margin: 0 0 30px 0;
+        }
+        .ch-alert .ch-alert-icon {
+            margin-top: 0;
+        }
+        .ch-alert-with-decription {
+            color: #8d8d8d;
+        }
+        .ch-alert-with-decription .ch-alert-message {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .sch-title {
+            padding: 30px 0 15px;
+            font-size: 18px;
+            color: #666;
+        }
+        .col-title {
+            font-size: 18px;
+            font-weight: 400;
+        }
+        .col-title .more {
+            margin-left: 25px;
+            color: #999;
+            font-size: 14px;
+        }
+        .footer-wrapper .footer {
+            border: none;
+        }
+        .yz-header-banner-wrapper {
+            background: linear-gradient(179deg,#2094f0,#1887e0 53%);
+        }
 
-    /* 3. 生成你的专属局部水印（微调了字体大小和间距，和官方1:1贴合） */
-    .empty-title::after, .van-panel::after {
-        content: "";
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        pointer-events: none;
-        z-index: 99999;
-        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='340' height='395'><text x='50%' y='50%' font-size='40' fill='rgba(200,200,200,0.3)' font-family='sans-serif' text-anchor='middle' dominant-baseline='middle' transform='rotate(-25, 130, 80)'>大连海事大学</text></svg>");
-    }
+        .yz-header-banner-wrapper .banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 200px;
+            line-height: 200px;
+            background: url("https://t2.chei.com.cn/yz/assets/images/header-banner-2x.jpg") no-repeat top;
+            background-size: auto 100%;
+            color: #fff;
+            text-shadow: 0px 2px 2px rgba(0,0,0,0.06);
+            text-align: center;
+        }
 
-    /* 4. 强制居中防拉伸：在电脑浏览器上也能完美保持手机端的窄屏比例！ */
-    body {
-        max-width: 500px !important;
-        margin: 0 auto !important;
-        box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-</style>
-<style>.ch-icon-activity-fill:before{content:""}.ch-icon-activity:before{content:""}.ch-icon-workplace-fill:before{content:""}.ch-icon-workplace:before{content:""}.ch-icon-reward-fill:before{content:""}.ch-icon-reward:before{content:""}.ch-icon-case:before{content:""}.ch-icon-case-fill:before{content:""}.ch-icon-share:before{content:""}.ch-icon-share-fill:before{content:""}.ch-icon-photo:before{content:""}.ch-icon-photo-fill:before{content:""}.ch-icon-jf-fill:before{content:""}.ch-icon-jf:before{content:""}.ch-icon-new-chat:before{content:""}.ch-icon-compass:before{content:""}.ch-icon-compass-fill:before{content:""}.ch-icon-direction-right:before{content:""}.ch-icon-direction-left:before{content:""}.ch-icon-direction-up:before{content:""}.ch-icon-direction-dowm:before{content:""}.ch-icon-tag-fill:before{content:""}.ch-icon-tag:before{content:""}.ch-icon-salary-fill:before{content:""}.ch-icon-salary:before{content:""}.ch-icon-mortarboard:before{content:""}.ch-icon-mortarboard-fill:before{content:""}.ch-icon-save:before{content:""}.ch-icon-menu-all:before{content:""}.ch-icon-check:before{content:""}.ch-icon-dot-menu:before{content:""}.ch-icon-menu:before{content:""}.ch-icon-select:before{content:""}.ch-icon-checkmark:before{content:""}.ch-icon-history:before{content:""}.ch-icon-link:before{content:""}.ch-icon-back:before{content:""}.ch-icon-kj:before{content:""}.ch-icon-zjzh:before{content:""}.ch-icon-jxzh:before{content:""}.ch-icon-revoke:before{content:""}.ch-icon-revoke-fill:before{content:""}.ch-icon-right:before{content:""}.ch-icon-left-fill:before{content:""}.ch-icon-left:before{content:""}.ch-icon-right-fill:before{content:""}.ch-icon-up:before{content:""}.ch-icon-down-fill:before{content:""}.ch-icon-down:before{content:""}.ch-icon-up-fill:before{content:""}.ch-icon-delete-fill:before{content:""}.ch-icon-delete:before{content:""}.ch-icon-kefu:before{content:""}.ch-icon-location:before{content:""}.ch-icon-location-fill:before{content:""}.ch-icon-upload-fill:before{content:""}.ch-icon-upload:before{content:""}.ch-icon-arrow-md-up-fill:before{content:""}.ch-icon-arrow-md-left-fill:before{content:""}.ch-icon-arrow-md-right-fill:before{content:""}.ch-icon-arrow-md-down-fill:before{content:""}.ch-icon-plus:before{content:""}.ch-icon-classify-fill:before{content:""}.ch-icon-classify:before{content:""}.ch-icon-speciality:before{content:""}.ch-icon-refresh-fill:before{content:""}.ch-icon-refresh:before{content:""}.ch-icon-md-fill:before{content:""}.ch-icon-md:before{content:""}.ch-icon-power-fill:before{content:""}.ch-icon-power:before{content:""}.ch-icon-speciality-fill:before{content:""}.ch-icon-sh-fill:before{content:""}.ch-icon-sh:before{content:""}.ch-icon-file:before{content:""}.ch-icon-waiting:before{content:""}.ch-icon-waiting-fill:before{content:""}.ch-icon-ewm:before{content:""}.ch-icon-reorder:before{content:""}.ch-icon-user:before{content:""}.ch-icon-arrows-up:before{content:""}.ch-icon-arrow-dropdown-fill:before{content:""}.ch-icon-arrow-dropdown:before{content:""}.ch-icon-arrow-down:before{content:""}.ch-icon-arrows-down:before{content:""}.ch-icon-arrows-right:before{content:""}.ch-icon-arrow-up:before{content:""}.ch-icon-arrow-dropup:before{content:""}.ch-icon-arrow-dropup-fill:before{content:""}.ch-icon-arrow-forward:before{content:""}.ch-icon-arrow-dropright:before{content:""}.ch-icon-arrow-dropright-fill:before{content:""}.ch-icon-error:before{content:""}.ch-icon-arrow-dropleft-fill:before{content:""}.ch-icon-arrows-left:before{content:""}.ch-icon-arrow-back:before{content:""}.ch-icon-arrow-dropleft:before{content:""}.ch-icon-close-fill:before{content:""}.ch-icon-close:before{content:""}.ch-icon-add-fill:before{content:""}.ch-icon-alert:before{content:""}.ch-icon-alert-fill:before{content:""}.ch-icon-information:before{content:""}.ch-icon-information-fill:before{content:""}.ch-icon-forbid:before{content:""}.ch-icon-forbid-fill:before{content:""}.ch-icon-add:before{content:""}.ch-icon-password:before{content:""}.ch-icon-yzm-fill:before{content:""}.ch-icon-password-fill:before{content:""}.ch-icon-yzm:before{content:""}.ch-icon-like-fill:before{content:""}.ch-icon-like:before{content:""}.ch-icon-home-fill:before{content:""}.ch-icon-home:before{content:""}.ch-icon-survey:before{content:""}.ch-icon-survey-fill:before{content:""}.ch-icon-qa-fill:before{content:""}.ch-icon-globe-fill:before{content:""}.ch-icon-globe:before{content:""}.ch-icon-qa:before{content:""}.ch-icon-interview-fill:before{content:""}.ch-icon-eye:before{content:""}.ch-icon-school:before{content:""}.ch-icon-school-fill:before{content:""}.ch-icon-department:before{content:""}.ch-icon-department-fill:before{content:""}.ch-icon-policy:before{content:""}.ch-icon-policy-fill:before{content:""}.ch-icon-news-fill:before{content:""}.ch-icon-news:before{content:""}.ch-icon-message:before{content:""}.ch-icon-message-fill:before{content:""}.ch-icon-calendar-fill:before{content:""}.ch-icon-calendar:before{content:""}.ch-icon-mail-open:before{content:""}.ch-icon-mail-open-fill:before{content:""}.ch-icon-analytics-fill:before{content:""}.ch-icon-analytics:before{content:""}.ch-icon-bookmarks-fill:before{content:""}.ch-icon-bookmarks:before{content:""}.ch-icon-help-fill:before{content:""}.ch-icon-help:before{content:""}.ch-icon-staff-fill:before{content:""}.ch-icon-bm-fill:before{content:""}.ch-icon-print-fill:before{content:""}.ch-icon-print:before{content:""}.ch-icon-bm:before{content:""}.ch-icon-building:before{content:""}.ch-icon-building-fill:before{content:""}.ch-icon-mail-fill:before{content:""}.ch-icon-record:before{content:""}.ch-icon-placard:before{content:""}.ch-icon-record-fill:before{content:""}.ch-icon-people:before{content:""}.ch-icon-entrance:before{content:""}.ch-icon-placard-fill:before{content:""}.ch-icon-notice-fill:before{content:""}.ch-icon-hot-fill:before{content:""}.ch-icon-notice:before{content:""}.ch-icon-staff:before{content:""}.ch-icon-mail:before{content:""}.ch-icon-soldier-fill:before{content:""}.ch-icon-certificate-fill:before{content:""}.ch-icon-hot:before{content:""}.ch-icon-people-fill:before{content:""}.ch-icon-soldier:before{content:""}.ch-icon-entrance-fill:before{content:""}.ch-icon-certificate:before{content:""}.ch-icon-card-fill:before{content:""}.ch-icon-card:before{content:""}.ch-icon-plan:before{content:""}.ch-icon-plan-fill:before{content:""}.ch-icon-zs:before{content:""}.ch-icon-zs-icon:before{content:""}.ch-icon-edit-fill:before{content:""}.ch-icon-edit:before{content:""}.ch-icon-map-fill:before{content:""}.ch-icon-map:before{content:""}.ch-icon-volume-fill:before{content:""}.ch-icon-volume:before{content:""}.ch-icon-person-add-fill:before{content:""}.ch-icon-person-add:before{content:""}.ch-icon-trophy-fill:before{content:""}.ch-icon-trophy:before{content:""}.ch-icon-click-fill:before{content:""}.ch-icon-click:before{content:""}.ch-icon-eye-off-fill:before{content:""}.ch-icon-eye-off:before{content:""}.ch-icon-score:before{content:""}.ch-icon-thesis-fill:before{content:""}.ch-icon-idcard-gh-fill:before{content:""}.ch-icon-rz-fill:before{content:""}.ch-icon-idcard-fill:before{content:""}.ch-icon-exam-fill:before{content:""}.ch-icon-xl-fill:before{content:""}.ch-icon-apply-fill:before{content:""}.ch-icon-xj-fill:before{content:""}.ch-icon-score-fill:before{content:""}.ch-icon-color-palette:before{content:""}.ch-icon-wechat-fill:before{content:""}.ch-icon-base-fill:before{content:""}.ch-icon-exam:before{content:""}.ch-icon-thesis:before{content:""}.ch-icon-idcard-gh:before{content:""}.ch-icon-rz:before{content:""}.ch-icon-apply:before{content:""}.ch-icon-idcard:before{content:""}.ch-icon-xl:before{content:""}.ch-icon-xj:before{content:""}.ch-icon-bag:before{content:""}.ch-icon-bag-fill:before{content:""}.ch-icon-educate:before{content:""}.ch-icon-call-fill:before{content:""}.ch-icon-call:before{content:""}.ch-icon-educate-fill:before{content:""}.ch-icon-info:before{content:""}.ch-icon-info-fill:before{content:""}.ch-icon-eye-fill:before{content:""}.ch-icon-clock-fill:before{content:""}.ch-icon-clock:before{content:""}.ch-icon-heart-fill:before{content:""}.ch-icon-heart:before{content:""}.ch-icon-star-fill:before{content:""}.ch-icon-star:before{content:""}.ch-icon-run:before{content:""}.ch-icon-wb:before{content:""}.ch-icon-contacts-fill:before{content:""}.ch-icon-contacts:before{content:""}.ch-icon-run-fill:before{content:""}.ch-icon-base:before{content:""}.ch-icon-laptop-fill:before{content:""}.ch-icon-laptop:before{content:""}.ch-icon-bjh-fill:before{content:""}.ch-icon-bjh:before{content:""}.ch-icon-play-fill:before{content:""}.ch-icon-play:before{content:""}.ch-icon-interview:before{content:""}.ch-icon-color-palette-fill:before{content:""}.ch-icon-musical-notes:before{content:""}.ch-icon-musical-notes-fill:before{content:""}.ch-icon-wb-fill:before{content:""}.ch-icon-wechat:before{content:""}.ch-icon-teacher-fill:before{content:""}.ch-icon-company-fill:before{content:""}.ch-icon-person-fill:before{content:""}.ch-icon-audition-fill:before{content:""}.ch-icon-contact-fill:before{content:""}.ch-icon-verify-fill:before{content:""}.ch-icon-teacher:before{content:""}.ch-icon-verify:before{content:""}.ch-icon-contact:before{content:""}.ch-icon-person:before{content:""}.ch-icon-company:before{content:""}.ch-icon-search:before{content:""}.ch-icon-audition:before{content:""}.ch-icon-text-fill:before{content:""}.ch-icon-material:before{content:""}.ch-icon-material-fill:before{content:""}.ch-icon-text:before{content:""}.ch-icon-download-fill:before{content:""}.ch-icon-paper-fill:before{content:""}.ch-icon-paper:before{content:""}.ch-icon-download:before{content:""}.ch-icon-master:before{content:""}.ch-icon-settings:before{content:""}.ch-icon-master-fill:before{content:""}.ch-icon-settings-fill:before{content:""}.ch-icon-checkmark-circle-fill:before{content:""}.ch-icon-checkmark-circle:before{content:""}.ch-icon-list-fill:before{content:""}.ch-icon-wait-fill:before{content:""}.ch-icon-list:before{content:""}.ch-icon-phd:before{content:""}.ch-icon-book-fill:before{content:""}.ch-icon-open-fill:before{content:""}.ch-icon-open:before{content:""}.ch-icon-phd-fill:before{content:""}.ch-icon-wait:before{content:""}.ch-icon-book:before{content:""}.ch-icon-evaluate-fill:before{content:""}.ch-icon-evaluate:before{content:""}</style>
-<style>html{-webkit-tap-highlight-color:transparent}body{margin:0}a{text-decoration:none}a:focus,button:focus,input:focus,textarea:focus{outline:0}textarea{font:inherit}[class*=van-hairline]{position:relative}[class*=van-hairline]:after{content:"";position:absolute;top:0;left:0;width:200%;height:200%;-webkit-transform:scale(.5);transform:scale(.5);-webkit-transform-origin:0 0;transform-origin:0 0;pointer-events:none;box-sizing:border-box;border:0 solid #e5e5e5}.van-hairline--top:after{border-top-width:1px}.van-hairline--left:after{border-left-width:1px}.van-hairline--right:after{border-right-width:1px}.van-hairline--bottom:after{border-bottom-width:1px}.van-hairline--top-bottom:after{border-width:1px 0}.van-hairline--surround:after{border-width:1px}@-webkit-keyframes van-slide-bottom-enter{0%{-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}}@keyframes van-slide-bottom-enter{0%{-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}}@-webkit-keyframes van-slide-bottom-leave{to{-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}}@keyframes van-slide-bottom-leave{to{-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}}@-webkit-keyframes van-fade-in{0%{opacity:0}to{opacity:1}}@keyframes van-fade-in{0%{opacity:0}to{opacity:1}}@-webkit-keyframes van-fade-out{0%{opacity:1}to{opacity:0}}@keyframes van-fade-out{0%{opacity:1}to{opacity:0}}@-webkit-keyframes van-rotate{0%{-webkit-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}@keyframes van-rotate{0%{-webkit-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}.van-icon:before{display:inline-block}.van-icon-add-o:before{content:""}.van-icon-add:before{content:""}.van-icon-add2:before{content:""}.van-icon-after-sale:before{content:""}.van-icon-alipay:before{content:""}.van-icon-arrow-left:before{content:""}.van-icon-arrow:before{content:""}.van-icon-balance-pay:before{content:""}.van-icon-browsing-history:before{content:""}.van-icon-card:before{content:""}.van-icon-cart:before{content:""}.van-icon-cash-back-record:before{content:""}.van-icon-cash-on-deliver:before{content:""}.van-icon-certificate:before{content:""}.van-icon-chat:before{content:""}.van-icon-check:before{content:""}.van-icon-checked:before{content:""}.van-icon-clear:before{content:""}.van-icon-clock:before{content:""}.van-icon-close:before{content:""}.van-icon-completed:before{content:""}.van-icon-contact:before{content:""}.van-icon-coupon:before{content:""}.van-icon-credit-pay:before{content:""}.van-icon-debit-pay:before{content:""}.van-icon-delete:before{content:""}.van-icon-description:before{content:""}.van-icon-discount:before{content:""}.van-icon-ecard-pay:before{content:""}.van-icon-edit-data:before{content:""}.van-icon-edit:before{content:""}.van-icon-exchange-record:before{content:""}.van-icon-exchange:before{content:""}.van-icon-fail:before{content:""}.van-icon-free-postage:before{content:""}.van-icon-gift-card-pay:before{content:""}.van-icon-gift-card:before{content:""}.van-icon-gift:before{content:""}.van-icon-gold-coin:before{content:""}.van-icon-goods-collect:before{content:""}.van-icon-home:before{content:""}.van-icon-hot-sale:before{content:""}.van-icon-hot:before{content:""}.van-icon-idcard:before{content:""}.van-icon-info-o:before{content:""}.van-icon-like-o:before{content:""}.van-icon-like:before{content:""}.van-icon-location:before{content:""}.van-icon-logistics:before{content:""}.van-icon-more-o:before{content:""}.van-icon-more:before{content:""}.van-icon-new-arrival:before{content:""}.van-icon-new:before{content:""}.van-icon-other-pay:before{content:""}.van-icon-passed:before{content:""}.van-icon-password-not-view:before{content:""}.van-icon-password-view:before{content:""}.van-icon-pause:before{content:""}.van-icon-peer-pay:before{content:""}.van-icon-pending-deliver:before{content:""}.van-icon-pending-evaluate:before{content:""}.van-icon-pending-orders:before{content:""}.van-icon-pending-payment:before{content:""}.van-icon-phone:before{content:""}.van-icon-photo:before{content:""}.van-icon-photograph:before{content:""}.van-icon-play:before{content:""}.van-icon-point-gift:before{content:""}.van-icon-points-mall:before{content:""}.van-icon-points:before{content:""}.van-icon-qr-invalid:before{content:""}.van-icon-qr:before{content:""}.van-icon-question:before{content:""}.van-icon-receive-gift:before{content:""}.van-icon-records:before{content:""}.van-icon-search:before{content:""}.van-icon-send-gift:before{content:""}.van-icon-setting:before{content:""}.van-icon-share:before{content:""}.van-icon-shop-collect:before{content:""}.van-icon-shop:before{content:""}.van-icon-shopping-cart:before{content:""}.van-icon-sign:before{content:""}.van-icon-stop:before{content:""}.van-icon-success:before{content:""}.van-icon-tosend:before{content:""}.van-icon-underway:before{content:""}.van-icon-upgrade:before{content:""}.van-icon-value-card:before{content:""}.van-icon-wap-home:before{content:""}.van-icon-wap-nav:before{content:""}.van-icon-warn:before{content:""}.van-icon-wechat:before{content:""}.van-loading__spinner--spinner i:before{width:2px;height:25%;content:" ";display:block;margin:0 auto;border-radius:40%;background-color:currentColor}@-webkit-keyframes van-circular{0%{stroke-dasharray:1,200;stroke-dashoffset:0}50%{stroke-dasharray:90,150;stroke-dashoffset:-40}to{stroke-dasharray:90,150;stroke-dashoffset:-120}}@keyframes van-circular{0%{stroke-dasharray:1,200;stroke-dashoffset:0}50%{stroke-dasharray:90,150;stroke-dashoffset:-40}to{stroke-dasharray:90,150;stroke-dashoffset:-120}}.van-button{position:relative;padding:0;display:inline-block;box-sizing:border-box;text-align:center;-webkit-appearance:none}.van-button:before{content:" ";position:absolute;top:50%;left:50%;opacity:0;width:100%;height:100%;border:inherit;border-color:#000;background-color:#000;border-radius:inherit;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}.van-button:active:before{opacity:.3}.van-button--unclickable:before{display:none}.van-button--primary{color:#fff}.van-button--large{width:100%}.van-cell{width:100%;display:flex;position:relative;background-color:#fff;overflow:hidden}.van-cell:not(:last-child):after{left:15px;right:0;width:auto;-webkit-transform:scaleY(.5);transform:scaleY(.5);border-bottom-width:1px}.van-cell-group{background-color:#fff}.van-cell__title,.van-cell__value{-webkit-box-flex:1;-webkit-flex:1;flex:1}.van-cell__value{overflow:hidden;text-align:right;vertical-align:middle}.van-cell__value--alone{text-align:left}.van-cell__right-icon--left:before{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.van-cell__right-icon--up:before{-webkit-transform:rotate(-90deg);transform:rotate(-90deg)}.van-cell__right-icon--down:before{-webkit-transform:rotate(90deg);transform:rotate(90deg)}.van-cell--clickable:active{background-color:#e8e8e8}.van-cell--required:before{content:"*";position:absolute;left:7px;font-size:14px;color:#f44}.van-row:after{content:"";display:table;clear:both}.van-row--flex:after{display:none}.van-badge:active{background-color:#e8e8e8}.van-badge:not(:last-child):after{border-bottom-width:1px}.van-badge--select:after{border-right-width:1px}.van-badge--select:active{background-color:#fff}.van-collapse-item__title .van-cell__right-icon:before{-webkit-transition:.3s;transition:.3s;-webkit-transform:rotate(90deg);transform:rotate(90deg)}.van-collapse-item__title:after{visibility:hidden}.van-collapse-item--expanded .van-collapse-item__title .van-cell__right-icon:before{-webkit-transform:rotate(-90deg);transform:rotate(-90deg)}.van-collapse-item--expanded .van-collapse-item__title:after{visibility:visible}.van-nav-bar__text:active{background-color:#e8e8e8}@-webkit-keyframes van-notice-bar-play{to{-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}}@keyframes van-notice-bar-play{to{-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}}@-webkit-keyframes van-notice-bar-play-infinite{to{-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}}@keyframes van-notice-bar-play-infinite{to{-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}}.van-search input::-webkit-search-cancel-button,.van-search input::-webkit-search-decoration,.van-search input::-webkit-search-results-button,.van-search input::-webkit-search-results-decoration{display:none}.van-search__cancel:active{background-color:#e8e8e8}.van-pagination__item:active{background-color:#38f;color:#fff;opacity:.8}.van-pagination__item:after{border-width:1px 0 1px 1px}.van-pagination__item:last-child:after{border-right-width:1px}.van-pagination__item--disabled:active{background-color:#f8f8f8;color:#666;opacity:.6}.van-pagination--simple .van-pagination__next:after,.van-pagination--simple .van-pagination__prev:after{border-width:1px}.van-panel{background:#fff}.van-step--vertical:not(:last-child):after{border-bottom-width:1px}.van-step--vertical:first-child:before{content:"";position:absolute;width:1px;height:20px;background-color:#fff;top:0;left:-15px;z-index:1}.van-tag:after{border-color:currentColor;border-radius:4px}.van-tag--mark:after{border-radius:0 16px 16px 0}.van-tabs__wrap--scrollable .van-tabs__nav::-webkit-scrollbar{display:none}.van-tab:active{background-color:#e8e8e8}.van-tab--disabled:active{background-color:#fff}.van-tabbar-item__icon--dot:after{top:0;right:-8px;width:8px;height:8px;content:" ";position:absolute;border-radius:100%;background-color:#f44}.van-stepper__minus:before,.van-stepper__plus:before{width:9px;height:1px}.van-stepper__minus:after,.van-stepper__plus:after{width:1px;height:9px}.van-stepper__minus:after,.van-stepper__minus:before,.van-stepper__plus:after,.van-stepper__plus:before{content:"";position:absolute;margin:auto;top:0;left:0;right:0;bottom:0;background-color:#6c6c6c}.van-stepper__minus:active,.van-stepper__plus:active{background-color:#e8e8e8}.van-stepper__minus--disabled:after,.van-stepper__minus--disabled:before,.van-stepper__plus--disabled:after,.van-stepper__plus--disabled:before{background-color:#c9c9c9}.van-stepper__minus--disabled:active,.van-stepper__plus--disabled:active{background-color:#f8f8f8}.van-stepper__minus:after{display:none}.van-stepper input[type=number]::-webkit-inner-spin-button,.van-stepper input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.van-slider__button:after{content:"";position:absolute;width:200%;height:200%;top:-50%;left:-50%}.van-field .van-cell__value{position:relative}.van-field__body{display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center}.van-field__control{border:0;margin:0;padding:0;width:100%;resize:none;display:block;box-sizing:border-box;background-color:transparent}.van-field__control:disabled{opacity:1;color:#666;background-color:transparent}.van-field--error .van-field__control::-webkit-input-placeholder{color:#f44}.van-field--error .van-field__control::placeholder{color:#f44}.van-uploader input[type=file]::-webkit-file-upload-button{cursor:pointer}.van-password-input:focus{outline:0}.van-password-input__security:after{border-radius:6px}.van-password-input__security li:not(:first-of-type):after{border-left-width:1px}.van-number-keyboard__close:active{background-color:#e8e8e8}.van-key:after{border-width:1px 1px 0 0}.van-key--green:after{border-color:#06bf04}.van-actionsheet__cancel:active,.van-actionsheet__item:active{background-color:#e8e8e8}.van-actionsheet__item--disabled:active{background-color:#fff}.van-dialog__confirm:active{color:#00c000}.van-picker__cancel:active,.van-picker__confirm:active{background-color:#e8e8e8}.van-contact-card:active{background-color:#e8e8e8}.van-contact-card--uneditable:active{background-color:#fff}.van-contact-card:after{content:"";display:block;height:2px;background:-webkit-repeating-linear-gradient(135deg,#ff6c6c,#ff6c6c 20%,transparent 0,transparent 25%,#3283fa 0,#3283fa 45%,transparent 0,transparent 50%);background:repeating-linear-gradient(-45deg,#ff6c6c,#ff6c6c 20%,transparent 0,transparent 25%,#3283fa 0,#3283fa 45%,transparent 0,transparent 50%);background-size:80px}.van-coupon-list__field:after{border-radius:6px;border-color:#cacaca}.van-coupon-list__list h3:after,.van-coupon-list__list h3:before{content:" ";width:45px;height:1px;top:50%;position:absolute;background-color:#e5e5e5}.van-coupon-list__list h3:before{left:50%;margin-left:-95px}.van-coupon-list__list h3:after{right:50%;margin-right:-95px}.van-coupon-list__close:active{background-color:#e8e8e8}.van-coupon-item__corner .van-icon:before{font-weight:700}.van-coupon-item:active .van-coupon-item__body{background-color:#e8e8e8}.van-coupon-item--disabled:active .van-coupon-item__body{background:#fff}.van-goods-action-mini-btn:after{border-width:1px 0 0 1px}.van-goods-action-mini-btn:first-child:after{border-left-width:0}.van-goods-action-mini-btn:active{background-color:#e8e8e8}.van-sku-body::-webkit-scrollbar{display:none}.van-sku-img-uploader__delete:before{border-radius:14px;background-color:#fff}body{background:#f7f8fa;font-family:Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,Arial,SimSun,"sans-serif";color:#2b2e33;word-wrap:break-word}.shadow-box.shadow-box-clickable:hover{box-shadow:0 1px .08rem rgba(0,0,0,.2)}.van-cell--clickable:active,a:active:not(.van-button){background-color:rgba(0,0,0,.05)}a{color:#1887e0}@keyframes stretchdelay{0%,40%,to{transform:scaleY(.4);-webkit-transform:scaleY(.4)}20%{transform:scaleY(1);-webkit-transform:scaleY(1)}}.van-cell{font-size:.427rem;line-height:.64rem;padding:.32rem .427rem;box-sizing:border-box;color:#2b2e33}.van-field .van-cell__title{max-width:2.667rem;margin-right:.16rem}.van-field .van-cell__title span{margin-right:0}.van-button{border-radius:.053rem}.van-button--primary{background-color:#1887e0;border:1px solid #1887e0}.van-button--large{height:1.267rem;line-height:1.227rem;font-size:.48rem}.van-field--error .van-field__control:-ms-input-placeholder,.van-field__control:-ms-input-placeholder{color:#b3b7bd}.van-field--error .van-field__control::placeholder,.van-field__control::placeholder{color:#b3b7bd}.van-dialog__confirm:active{color:#1887e0}.van-cell:not(:last-child):after{left:0}.van-icon-arrow.up:before{transform:rotate(-90deg)}.van-icon-arrow.down:before{transform:rotate(90deg)}.yzwb-ksxx{position:relative}.yzwb-ksxx .van-panel__header{background-color:#e8eaed;color:#65696e}.yzwb-ksxx .van-cell__value,.yzwb-ksxx .van-cell__value textarea{color:#65696e}.yzwb-ksxx .van-hairline--top-bottom:after{border-width:0}.yzwb-des{font-size:.373rem;color:#65696e;line-height:.587rem;word-wrap:break-word}.yzwb-des p{margin:0}.yzwb-bg .van-cell{padding-top:.427rem;padding-bottom:0;background:#f7f8fa}.yzwb-bg .van-cell:after{border-width:0}.yzwb-bg .van-cell:last-child{padding-bottom:.427rem}.yzwb-header{text-align:center;font-size:.427rem;line-height:.64rem;padding:.267rem;color:#fff;background:#1887e0}.yzwb-right:before{position:relative;top:30%;margin-top:-.107rem;line-height:1;font-size:.213rem;color:#d5d7db}.yzwb-left:before{width:1.707rem;height:1.707rem;background:#1887e0;font-size:.853rem;line-height:1.707rem;text-align:center;color:#fff}.yzwb-select input:disabled,.yzwb-select textarea:disabled{-webkit-text-fill-color:#2b2e33;-webkit-opacity:1;color:#65696e}.yzwb-ksxx-show .van-field__control:disabled{-webkit-text-fill-color:#2b2e33}.yzwb-ksxx-show .yzwb-jl-title .van-field__control:disabled{-webkit-text-fill-color:#93989e}.yzwb-ksxx-show .yzwb-create-bmh .van-field__control:disabled{-webkit-text-fill-color:#f93b3b}@keyframes mymove{0%{height:0}to{height:100%}}.yzwb-ksxx .van-panel__header{background:#f7f8fa}.yzwb-notice-bar{background:#fffae8;padding:.24rem .32rem;color:#65696e;font-size:.373rem}.bottom-btn li:after{content:"";position:absolute;right:-.2rem;top:50%;margin-top:-.133rem;width:1px;height:.267rem;background:#d5d7db}.bottom-btn li:last-child:after{display:none}.yzwb-header{position:relative}.msg-list .time.red-point:after{content:"";position:absolute;right:.267rem;top:50%;transform:translateY(-50%);width:.213rem;height:.213rem;background:#f93b3b;border-radius:50%}.yzwb-ksxx{box-sizing:border-box}.disabledBtn .van-dialog__confirm:active{color:#93989e}.enter-box .title:before{content:"";position:absolute;left:0;top:50%;margin-top:-.2rem;width:.08rem;height:.4rem;background:#1887e0}.index-title:before{content:"";position:absolute;top:50%;left:0;width:.08rem;height:.427rem;background:#1887e0;transform:translateY(-50%)}.help-list-con li:before{content:"";position:absolute;top:.56rem;left:0;width:.107rem;height:.107rem;border-radius:50%;background:#d5d7db}.main-progress-con ul::-webkit-scrollbar{display:none}.main-progress-con li:last-child:after{display:none}.main-progress-con li:after{content:"";position:absolute;top:50%;right:.053rem;width:.24rem;height:.053rem;background:#bae5f9;border-radius:.04rem;transform:translateY(-50%)}.progress-modal-con .progress-modal-list li:first-child:before{top:50%}.progress-modal-con .progress-modal-list li:last-child:before{top:-50%}.progress-modal-con .progress-modal-list li:before{content:"";position:absolute;top:0;left:.16rem;width:1px;height:100%;background:#1887e0;transform:translate(-50%)}.progress-modal-con .progress-modal-list li:after{content:"";position:absolute;top:50%;left:0;width:.32rem;height:.32rem;border:.053rem solid #1887e0;border-radius:50%;background:#fff;box-sizing:border-box;transform:translateY(-50%)}</style>
-<style>.van-row:after{display:table;clear:both;content:""}.wap-footer{line-height:normal;color:#999;background:#282828;font-size:.32rem}.wap-footer a{text-decoration:none;color:#999}.footer-wrapper .footer-media a:hover{text-decoration:none}.footer-wrapper .footer-media a:hover img{display:block}</style>
-<style>.van-cell__title,.van-cell__value{min-width:0}.yzwb-ksxx{min-height:calc(100vh - 1.7067rem);padding-bottom:0}.yzwb-notice-bar{line-height:0.587rem}.empty-title .van-panel__header{padding-bottom:0}</style>
-<meta name=referrer content=no-referrer><link rel="shortcut icon" type=image/x-icon href="data:image/x-icon;base64,AAABAAIAICAAAAEAIAAoEAAAJgAAABAQAAABACAAKAQAAE4QAAAoAAAAIAAAAEAAAAABACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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AP+OSAD/fUAA/2QzAP9KJgD/MRkA/xgMAP8DAgD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADdAAAAnQAAAF0AAAAdAAAAAAAAAAAAAAAAAAAAAAAAABkAAABXAAAAlwAAANcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA3AAAAJ0AAABdAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAABXAAAAlwAAANcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANwAAACdAAAAXQAAABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAABXAAAAlwAAANcAAADbAAAAnQAAAF0AAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wABqVQACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf39/AmJiYkNGRkZIMzMzBQAAAAAAAAAAxmMAErxhAHOqVQAGAAAAAAAAAAAAAAAAAAAAAAAAAABlZWUZY2NjaWhoaMNlZWX/RUVF/z09Pcs+Pj52NDxDIv9/AAzKXgB5qlUABgAAAAAAAAAAAAAAAG1tbQdmZmaOZmZm52xsbP9tbW3/Z2dn/0VFRf9BQUH/Q0ND/zw8QO9IRDq3kmwti3+/fwQAAAAAAAAAAAAAAAB/f38CZ2dnvnR0dP9ubm7/bGxs/2FhYf9AQED/QUFB/0RERP9FQUH/OUlO9A2x3tUA4f8RAAAAAAAAAAAAAAAAAAAAAF9fX1tZWVn/Pz8//ykpKf8RERH/AwYK/xAUGP8cISb/LDI2/0xBNojGhDBkAAAAAAAAAAAAAAAhAAAAcAAAAKsAAADeAwMD/wAAAP8AAAD/AAAA/yYSAP83GgD/RiIA/1MrAv9eLgDwWCYA2wIAAHUAAAAkAAAAHwAAAG0AAACnAAAA2AAAAPUAAAD/AAAA/wUDAP89HwD/NxwA/yYTAP8XDAD2DwgA1wAAAKEAAABxAAAAIgAAAAAAAAAAAAAAAAAAAAcAAAAnAAAAYQAAAJUAAADRAAAA1AAAAJgAAABkAAAAKQAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="><style>.sf-hidden{display:none!important}</style><link rel=canonical href=https://yz.chsi.com.cn/apply/cjcxa/><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;"></head>
-<body style=font-size:12px>
- <div id=appLoading style=display:none>
- 
- </div>
- <div id=app><div class=yzwb-ksxx><div class="wap-nav-bar wap-nav-bar-border"><div class=wap-nav-bar__left><a href=https://yz.chsi.com.cn/wap/><img src=data:image/png;base64,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 alt=研招网 class=logo></a> <span class=logo-dot></span> <span class=logo-text><a href=https://yz.chsi.com.cn/apply/cjcx/>成绩查询</a></span></div> <div class=wap-nav-bar__right><div class=nav-search> <span><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+55So5oi3PC90aXRsZT4KICAgIDxnIGlkPSLnlKjmiLciIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxwYXRoIGQ9Ik03Ljk3OTQ3MTE0LDIuMjUgQzkuOTEyNDY3NzYsMi4yNSAxMS40Nzk0NzExLDMuODE3MDAzMzggMTEuNDc5NDcxMSw1Ljc1IEMxMS40Nzk0NzExLDYuOTIyODU4NzYgMTAuOTAyNTczLDcuOTYwOTc1NzMgMTAuMDE3MDU4LDguNTk2MDY5NTMgQzEyLjE5OTUyMzQsOS4zNjgxNjI1NiAxMy44MDIyMzU0LDExLjM2MDYzMjYgMTQsMTMuNzUwMDk3MyBMMTIuOTkyNDIzNiwxMy43NTAzMDAyIEMxMi43NDA4Mzk3LDExLjIyMzQ5NDkgMTAuNjAxNjc4Myw5LjI1IDgsOS4yNSBDNS4zOTgzMjE3LDkuMjUgMy4yNTkxNjAzMywxMS4yMjM0OTQ5IDMuMDA3NTc2MzcsMTMuNzUwMzAwMiBMMiwxMy43NTAwOTczIEMyLjE5Njk0NTcyLDExLjM3MDUyNjEgMy43ODcyMjg3Myw5LjM4NDY2ODg5IDUuOTU1OTM0MDMsOC42MDQ2NTI1OSBDNS4wNjI1MDk3NSw3Ljk3MTk5MjI1IDQuNDc5NDcxMTQsNi45MjkwODQxMSA0LjQ3OTQ3MTE0LDUuNzUgQzQuNDc5NDcxMTQsMy44MTcwMDMzOCA2LjA0NjQ3NDUyLDIuMjUgNy45Nzk0NzExNCwyLjI1IFogTTcuOTc5NDcxMTQsMy4yNSBDNi41OTg3NTkyNywzLjI1IDUuNDc5NDcxMTQsNC4zNjkyODgxMyA1LjQ3OTQ3MTE0LDUuNzUgQzUuNDc5NDcxMTQsNy4xMzA3MTE4NyA2LjU5ODc1OTI3LDguMjUgNy45Nzk0NzExNCw4LjI1IEM5LjM2MDE4MzAxLDguMjUgMTAuNDc5NDcxMSw3LjEzMDcxMTg3IDEwLjQ3OTQ3MTEsNS43NSBDMTAuNDc5NDcxMSw0LjM2OTI4ODEzIDkuMzYwMTgzMDEsMy4yNSA3Ljk3OTQ3MTE0LDMuMjUgWiIgaWQ9IuW9oueKtue7k+WQiCIgZmlsbD0iIzAwMDAwMCIgZmlsbC1ydWxlPSJub256ZXJvIj48L3BhdGg+CiAgICA8L2c+Cjwvc3ZnPg=="></span> <span><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+5pCc57SiPC90aXRsZT4KICAgIDxnIGlkPSI5MjAiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSLmkJzntKIiIGZpbGw9IiMwMDAwMDAiIGZpbGwtcnVsZT0ibm9uemVybyI+CiAgICAgICAgICAgIDxyZWN0IGlkPSLnn6nlvaIiIG9wYWNpdHk9IjAiIHg9IjAiIHk9IjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PC9yZWN0PgogICAgICAgICAgICA8cGF0aCBkPSJNOS43NiwxMC40NjkgQzcuNzkwMDcwNywxMi4wNjIzODgyIDQuOTE3NTkwMjYsMTEuODM1MTAyOSAzLjIyMjc1OTIxLDkuOTUxNzQwMiBDMS41Mjc5MjgxNyw4LjA2ODM3NzQ2IDEuNjAzNzU5OTYsNS4xODc5MTcwOCAzLjM5NTMzODUyLDMuMzk2MzM4NTIgQzUuMTg2OTE3MDgsMS42MDQ3NTk5NiA4LjA2NzM3NzQ2LDEuNTI4OTI4MTcgOS45NTA3NDAyLDMuMjIzNzU5MjEgQzExLjgzNDEwMjksNC45MTg1OTAyNiAxMi4wNjEzODgyLDcuNzkxMDcwNyAxMC40NjgsOS43NjEgTDE0LDEzLjI5IEwxMy4yOTIsMTMuOTk5IEw5Ljc2LDEwLjQ2OCBMOS43NiwxMC40NjkgWiBNMTAuNTI3LDYuNzY0IEMxMC41NDkxNTM1LDUuNDA1MTY4NzUgOS44MzY5MDk2MSw0LjEzOTk2ODQ5IDguNjYzNjgwNjEsMy40NTQwNzcyMSBDNy40OTA0NTE2MiwyLjc2ODE4NTkyIDYuMDM4NTQ4MzgsMi43NjgxODU5MiA0Ljg2NTMxOTM5LDMuNDU0MDc3MjEgQzMuNjkyMDkwMzksNC4xMzk5Njg0OSAyLjk3OTg0NjUzLDUuNDA1MTY4NzUgMy4wMDIsNi43NjQgQzMuMDM1NDg3OTgsOC44MTgwNTg0OCA0LjcxMDE2ODU2LDEwLjQ2NTY1ODcgNi43NjQ1LDEwLjQ2NTY1ODcgQzguODE4ODMxNDQsMTAuNDY1NjU4NyAxMC40OTM1MTIsOC44MTgwNTg0OCAxMC41MjcsNi43NjQgTDEwLjUyNyw2Ljc2NCBaIiBpZD0i5b2i54q2Ij48L3BhdGg+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4="></span> <span><img src=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+6I+c5Y2VPC90aXRsZT4KICAgIDxnIGlkPSLoj5zljZUiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJtbC/nm67lvZUv5o+P6L65IiBmaWxsPSIjMDAwMDAwIiBmaWxsLXJ1bGU9Im5vbnplcm8iPgogICAgICAgICAgICA8cmVjdCBpZD0i55+p5b2iIiBvcGFjaXR5PSIwIiB4PSIwIiB5PSIwIiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiPjwvcmVjdD4KICAgICAgICAgICAgPHBhdGggZD0iTTE0LDMgTDIsMyBMMiw0IEwxNCw0IEwxNCwzIFogTTIsNy41IEwxNCw3LjUgTDE0LDguNSBMMiw4LjUgTDIsNy41IFogTTIsMTIgTDE0LDEyIEwxNCwxMyBMMiwxMyBMMiwxMiBaIiBpZD0i5b2i54q2IiBmaWxsLW9wYWNpdHk9IjAuOSI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+> </span></div> </div></div> <div class=yzwb-header>2026年部分考生初试成绩查询</div> <div class=yzwb-notice-bar style=word-break:break-all>
- 招生单位说明：复试等相关事宜请关注我校研究生院网站（网址:http://grs.dlmu.edu.cn/）发布的通知。
- </div> <div class="empty-title van-cell-group van-hairline--top-bottom van-panel"style="position: relative; overflow: hidden;"><div class="my-custom-watermark"></div><div class="van-cell van-hairline van-panel__header"></div><div class=van-panel__content style=position:relative><div class="van-cell van-hairline van-field"><div class=van-cell__title><span>查询流水号</span></div><div class=van-cell__value><div class=van-field__body><textarea rows=1 disabled class=van-field__control style=height:35px>030200064176506205904</textarea></div></div></div> <div class="van-cell van-hairline van-field"><div class=van-cell__title><span>姓名</span></div><div class=van-cell__value><div class=van-field__body><textarea rows=1 disabled class=van-field__control style=height:35px>王雪盈</textarea></div></div></div> <div class="van-cell van-hairline van-field"><div class=van-cell__title><span>报名号</span></div><div class=van-cell__value><div class=van-field__body><textarea rows=1 disabled class=van-field__control style=height:35px>650698763</textarea></div></div></div> <div class="van-cell van-hairline van-field"><div class=van-cell__title><span>准考证号</span></div><div class=van-cell__value><div class=van-field__body><textarea rows=1 disabled class=van-field__control style=height:35px>100286650600011</textarea></div></div></div> <div class="van-cell van-hairline van-field"><div class=van-cell__title><span>总分</span></div><div class=van-cell__value><div class=van-field__body><textarea rows=1 disabled class=van-field__control style=height:35px>331</textarea></div></div></div> <div class="van-cell van-hairline van-field"><div class=van-cell__title><span>第一门</span></div><div class=van-cell__value><div class=van-field__body><textarea rows=1 disabled class=van-field__control style=height:35px>(101)思想政治理论：68</textarea></div></div></div> <div class="van-cell van-hairline van-field"><div class=van-cell__title><span>第二门</span></div><div class=van-cell__value><div class=van-field__body><textarea rows=1 disabled class=van-field__control style=height:35px>(201)英语（一）：70</textarea></div></div></div> <div class="van-cell van-hairline van-field"><div class=van-cell__title><span>第三门</span></div><div class=van-cell__value><div class=van-field__body><textarea rows=1 disabled class=van-field__control style=height:35px>(612)法理、国际法：98</textarea></div></div></div> <div class="van-cell van-hairline van-field"><div class=van-cell__title><span>第四门</span></div><div class=van-cell__value><div class=van-field__body><textarea rows=1 disabled class=van-field__control style=height:35px>(819)民法、刑法：95</textarea></div></div></div> <div class="van-cell van-hairline van-field"><div class=van-cell__title><span>备注</span></div><div class=van-cell__value><div class=van-field__body><textarea rows=1 disabled class=van-field__control style=height:35px>无</textarea></div></div></div></div></div> <div class="yzwb-bg van-cell-group van-hairline--top-bottom"><div class="van-cell van-hairline"><div class="van-cell__value van-cell__value--alone"><div class="van-cell-text yzwb-des"><p>本系统所有数据均为招生单位提供，招生单位对查询结果负责解释。</p> <p>若查询的成绩为负值，表示有缺考、违纪等情况。若仍对查询结果有疑问，请咨询相应的招生单位。</p></div></div></div> <div class="van-cell van-hairline"><div class="van-cell__value van-cell__value--alone"><a class="van-button van-button--primary van-button--large" href=https://yz.chsi.com.cn/apply/cjcx/ target=_self><span class=van-button__text>返回</span></a></div></div></div> </div> <div class=wap-footer><div class=wap-footer-second style=line-height:0.5333rem;padding:0.32rem;text-align:center>
- 主办单位：<a href=https://chesicc.chsi.com.cn/>教育部学生服务与素质发展中心</a> <br>
- Copyright © 2003-<span>2026</span> <a href=https://www.chsi.com.cn/>学信网</a> All Rights Reserved
- </div></div></div>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- <style class=sf-hidden>.watermark-container{position:absolute;top:0;left:0;width:100%;height:100%;z-index:9999;pointer-events:none;user-select:none;box-sizing:border-box;background-attachment:local}</style>
-<template id=watermark-template>
-    <div style="display: none;"></div>
-</template>
- 
- 
- <style class=sf-hidden>.wap-nav-bar{position:relative;z-index:1;height:1.173rem;display:flex;align-items:center;background:#fff}.wap-nav-bar-border:after{position:absolute;box-sizing:border-box;content:" ";pointer-events:none;top:-50%;right:-50%;bottom:-50%;left:-50%;border-bottom:1px solid #D5D7DB;transform:scale(.5)}.wap-nav-bar .wap-nav-bar__left{position:absolute;left:0;display:flex;align-items:center;padding:0 0.427rem}.wap-nav-bar .logo{display:block;width:2.87rem}.wap-nav-bar .wap-nav-bar__right{position:absolute;right:0;display:flex;align-items:center;padding:0 0.427rem;line-height:1}.logo-text{font-size:0.373rem;color:#65696E}.logo-text a{color:#2B2E33}.logo-dot{display:block;width:0.027rem;height:0.533rem;background:#E8EAED;margin:0 0.213rem}.close-bar::after{position:absolute;box-sizing:border-box;content:" ";pointer-events:none;top:-50%;right:-50%;bottom:-50%;left:-50%;border-bottom:1px solid #D5D7DB;transform:scale(.5)}.ch-common-nav-popup .van-popup::after{position:absolute;box-sizing:border-box;content:" ";pointer-events:none;top:-50%;right:-50%;bottom:-50%;left:-50%;border:0 solid #E8EAED;transform:scale(.5);border-top-width:1px;border-color:#D5D7DB}.yz-top-navlist-title::before{display:block;content:"";width:0.08rem;height:0.4rem;background:#1887E0;border-radius:0.04rem;margin-right:0.13rem}.yz-top-navlist-content a:active{background-color:rgba(0,0,0,0.05)}a.yz-top-navlist-link:active{background-color:rgba(0,0,0,0.05)}.nav-search{display:flex;align-items:center}.nav-search span+span{margin-left:0.32rem}.nav-search img{display:block;width:.64rem}</style>
-<template id=nav-bar-template>
-    <div :class="['wap-nav-bar', border ? 'wap-nav-bar-border' : '']" v-if="!hidebar">
-        <div class="wap-nav-bar__left">
-            <a href="/wap/">
-                <img class="logo" src="https://t1.chei.com.cn/yz/wap/assets/images/index/logo.png" alt="研招网">
-            </a>
-            <template v-if="secondTitleHtml">
-                <span class="logo-dot"></span>
-                <span class="logo-text" v-html="secondTitleHtml"></span>
-            </template>
-        </div>
-        <div class="wap-nav-bar__right">
-            <div class="nav-search">
-                <span v-if="showKf" @click="location.assign(kfUrl)">
-                    <slot name="kf-icon">
-                        <img src="https://t1.chei.com.cn/common/images/wap-icon/nav-kf.svg">
-                    </slot>
-                </span>
-                <span v-if="showUser" @click="location.assign(userUrl)">
-                    <slot name="user-icon">
-                        <img src="https://t1.chei.com.cn/common/images/wap-icon/nav-user.svg">
-                    </slot>
-                </span>
-                <span @click="showSearch = true;">
-                    <slot name="search-icon">
-                        <img src="https://t2.chei.com.cn/common/images/icon-search-wap.svg">
-                    </slot>
-                </span>
-                <span @click="showNav = true;">
-                    <slot name="nav-icon">
-                        <img src="https://t1.chei.com.cn/common/images/wap-icon/nav-menu.svg">
-                    </slot>
-                    <div ref="yzpopup" class="ch-common-nav-popup">
-                        <template v-if="showNav">
-                            <div class="ch-van-overlay" @click="showNav = false;" style="z-index: 2001;"></div>
-                            <div class="van-popup van-popup--center" style="z-index: 2002;">
-                                <div class="close-bar">
-                                    <a href="/wap/"><img src="https://t1.chei.com.cn/yz/wap/assets/images/index/logo.png" alt="研招网" class="logo"></a>
-                                    <img src="https://t1.chei.com.cn/common/images/wap-icon/nav-close.svg" @click="showNav = false;" style="width: .64rem;display: block">
-                                </div>
-                                <div class="yz-row-list">
-                                    <div class="van-row" v-for="nav in navList">
-                                    <div class="yz-top-navlist-item" v-if="!nav.href">
-                                        <span class="yz-top-navlist-title">{{nav.name}}</span>
-                                    </div>
-                                    <div class="yz-top-navlist-item" v-else="">
-                                        <span class="yz-top-navlist-title">{{nav.name}}</span>
-                                        <a class="yz-top-navlist-link" :href="isWap ? nav.wapHref : nav.href" :target="isWap ? '' : '_blank'" @mousedown="gaTrackerOutboundLink({ eventCategory: 'wap-二级导航', eventAction: 'click', eventLabel: nav.name })">
-                                            <img src="https://t1.chei.com.cn/common/images/wap-icon/nav-next.svg" style="width: .4rem;display: block">
-                                        </a>
-                                    </div>
-                                    <div class="yz-top-navlist-content" v-if="nav.child &amp;&amp; nav.child.length&gt;0">
-                                        <a v-for="item in nav.child" :href="isWap ? item.wapHref : item.href" :target="isWap ? '' : '_blank'" @mousedown="gaTrackerOutboundLink({ eventCategory: 'wap-二级导航', eventAction: 'click', eventLabel: item.name })">{{ item.name }}</a>
-                                    </div>"ch-van-overlay ch-van-overlay-search" style="z-index: 2001"></div>
-                            <div class="van-popup van-popup--center" style="z-index: 2002">
-                                <form @submit.prevent="searchSubmit" ref="site-search-wap" class="site-search-wap" action="https://cn.bing.com/search" method="get">
-                                    <img @click="showSearch=false" src="https://t1.chei.com.cn/common/images/icon-back.svg" style="width: .533rem;display: block;margin-right: 0.24rem;">
-                                    <input type="hidden" class="realQuery" name="q" :value="searchValue + ' site:yz.chsi.com.cn'">
-                                    <input placeholder="" type="text" ref="seachInput" name="query" autocomplete="off" class="top-nav-search-input-wap" v-model.trim="searchValue" maxlength="100">
-                                    <button type="submit" class="top-nav-search-button-wap">搜索</button>
-                                </form>
-                            </div>
-                        </template>
-                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        </template>
-                        <template v-if="showSearch">
-                            <div class=
-                </span>
+        .yz-header-banner-wrapper h1 {
+            line-height: 46px;
+            font-size: 38px;
+            font-weight: 700;
+        }
+
+        .yz-header-banner-wrapper .ch-sub-title {
+            margin-top: 8px;
+            font-size: 16px;
+            line-height: 24px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .container {
+            min-height: calc(100vh - 248px);
+        }
+        .no-data {
+            padding: 120px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .no-data img {
+            display: block;
+            width: 180px;
+            margin-bottom: 12px;
+        }
+        .no-data .title {
+            line-height: 22px;
+            font-size: 14px;
+            margin-bottom: 4px;
+            font-weight: 700;
+            color: #2B2E33;
+        }
+        .no-data .msg {
+            line-height: 22px;
+            font-size: 14px;
+            color: #65696E;
+        }
+        .no-data .btn-con {
+            margin-top: 20px;
+        }
+        a.ivu-btn-primary {
+            color: #fff;
+        }
+    </style>
+    <!-- 页面中额外css引入 -->
+    
+    <script type="text/javascript">
+// 百度统计
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?3916ecc93c59d4c6e9d954a54f37d84c";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-100524-7"></script>
+<script>
+function gaTrackerOutboundLink(params) { //ga链接埋点
+    gtag('event', params.eventAction, {
+        'event_category': params.eventCategory,
+        'event_label': params.eventLabel
+    });
+    return true;
+};
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-100524-7', {'sample_rate': 5});
+</script>
+</head>
+<body class="ch-sticky">
+    <div id="appLoading" style="display: none;">
+        <div class="spin-loading">
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
             </div>
-            <slot></slot>
         </div>
     </div>
-</template>
- <div class=ch-common-nav-popup> </div>
 
- <style>
-    /* 属于你的自定义水印 */
-    .my-custom-watermark {
-        position: absolute; 
-        top: 0; left: 0; right: 0; bottom: 0; 
-        pointer-events: none; 
-        z-index: 99999;
-        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='150'><text x='50%' y='50%' font-size='22' fill='rgba(200,200,200,0.3)' font-family='sans-serif' text-anchor='middle' dominant-baseline='middle' transform='rotate(-25, 110, 75)'>北京大学</text></svg>");
+    <div class="main-wrapper-org">
+        <!-- 吊顶区域 -->
+<style>
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .top-nav-wrapper {
+        width: 100%;
+        height: 48px;
+        line-height: 48px;
+        background: #fff;
+        font-size: 14px;
+        box-sizing: border-box;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+        z-index: 100;
+        position: relative;
+    }
+    .top-nav-wrapper a {
+        color: #2b2e33;
+    }
+    .top-nav-wrapper a:hover {
+        color: #1887e0;
+        font-weight: 700;
+        text-decoration: none;
+    }
+    .top-nav-wrapper .top-nav {
+        width: 1180px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+    }
+    .top-nav-wrapper .top-nav-list {
+        flex: 1;
+        height: 48px;
+        display: flex;
+        align-items: center;
+    }
+    .top-nav-wrapper .top-nav-list a {
+        margin-right: 20px;
+    }
+    .top-nav-wrapper .top-nav-list a.top-nav-home {
+        display: inline-block;
+        width: 98px;
+        height: 36px;
+        margin-right: 20px;
+        margin-left: 0px;
+        background-image: url("https://t2.chei.com.cn/yz/assets/images/logo-min.png");
+        background-image: -webkit-image-set(
+            url("https://t2.chei.com.cn/yz/assets/images/logo-min.png") 1x,
+            url("https://t4.chei.com.cn/yz/assets/images/logo-min2x.png") 2x
+        );
+        background-repeat: no-repeat;
+        background-position: center left;
+    }
+    .top-nav-hide {
+        position: relative;
+        cursor: pointer;
+        color: #2b2e33;
+    }
+    .top-nav-hide:hover {
+        color: #2b2e33;
+    }
+    .top-nav-hide:hover .top-nav-pop {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .top-nav-pop {
+        padding: 18px 30px 18px 16px;
+        visibility: hidden;
+        box-sizing: border-box;
+        background-color: #fff;
+        color: #2b2e33;
+        text-align: center;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 1;
+        top: 44px;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.12);
+        font-size: 12px;
+        line-height: 20px;
+        display: flex;
+    }
+    .top-nav-pop-arrow {
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        border-color: transparent;
+        border-style: solid;
+        left: 50%;
+        margin-left: -14px;
+        top: -7px;
+        border-width: 0 7px 7px;
+        border-bottom-color: rgba(0, 0, 0, 0.03);
+    }
+    .top-nav-pop-arrow::after {
+        display: block;
+        content: '';
+        width: 0;
+        height: 0;
+        position: absolute;
+        border-color: transparent;
+        border-style: solid;
+        left: 50%;
+        margin-left: -7px;
+        top: 1px;
+        border-width: 0 7px 7px;
+        border-bottom-color: #fff;
+    }
+    .top-nav-wrapper .top-nav-list a.top-nav-home:hover {
+        text-decoration: none;
+    }
+    .top-nav-wrapper .top-nav-load {
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .top-nav-wrapper a.username {
+        flex: 1;
+        color: #1887e0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: right;
+    }
+    .top-nav-pop-clo {
+        font-size: 14px;
+        line-height: 22px;
+        margin-right: 22px;
+    }
+    .top-nav-pop-clo:last-child {
+        margin-right: 0;
+    }
+    .top-nav-wrapper .top-nav-pop-clo a {
+        display: block;
+        margin-right: 0;
+        white-space: nowrap;
+        text-align: left;
+        margin-bottom: 8px;
+    }
+    .top-nav-wrapper .top-nav-pop-clo a:last-child {
+        margin-bottom: 0;
+    }
+    .top-nav-more {
+        display: flex;
+        align-items: center;
+    }
+    .top-nav-hide:hover .top-nav-more {
+        color: #1887e0;
+        font-weight: 700;
+    }
+    .top-nav-more img {
+        width: 14px;
+        margin-left: 4px;
+        transform: rotate(90deg);
+    }
+    .top-nav-hide:hover img {
+        transform: rotate(-90deg);
+    }
+    .info-line {
+        display: block;
+        width: 1px;
+        height: 12px;
+        background: #e8eaed;
+        margin: 0 12px;
+    }
+    .top-nav-wrapper.active .seach-toggel {
+        display: none;
+    }
+    .search-cancel {
+        display: none;
+        margin-left: 12px;
+        cursor: pointer;
+    }
+    .top-nav-wrapper.active .search-cancel{
+        display: block;
+    }
+    .top-nav-load-search {
+        display: block;
+        width: 20px;
+        height: 20px;
+        background: url("https://t2.chei.com.cn/common/images/icon-search.svg") center center no-repeat;
+        cursor: pointer;
+    }
+    .top-nav-search-input {
+        display: none;
+    }
+    .top-nav-search-input .search-input {
+        display: block;
+        width: 200px;
+        border: 1px solid #D5D7DB;
+        height: 30px;
+        background: #FFF;
+        border-radius: 4px;
+        outline: none;
+        padding: 0 28px 0 8px;
+        box-sizing: border-box;
+    }
+    .top-nav-search-input .search-input:focus {
+        border: 1px solid #1887E0;
+    }
+    .top-nav-wrapper.active .top-nav-search-input {
+        display: block;
+    }
+    .top-nav-wrapper.active .top-nav-load {
+        max-width: none;
+    }
+    .site-search {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+    .top-nav-wrapper.active .top-nav-load-search {
+        display: none;
+    }
+    .top-nav-wrapper.active .search-button {
+        display: block;
+        width: 20px;
+        height: 20px;
+        background: url("https://t2.chei.com.cn/common/images/icon-search.svg") center center no-repeat;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        position: absolute;
+        right: 8px;
+        top: 5px;
+    }
+    .top-nav-load-info {
+        display: flex;
+        align-items: center;
     }
 </style>
-<div class="my-custom-watermark"></div>
+<div class="top-nav-wrapper">
+    <div class="top-nav">
+        <div class="top-nav-list" onmousedown="handleLinkClick(event, 'pc-二级导航')">
+            <a href="/" class="top-nav-home">&ensp;</a>
+            <a class="seach-toggel" href="/">首页</a>
+            <a class="seach-toggel" href="/kyzx/zcdh/">国家政策</a>
+            <a class="seach-toggel" href="/kyzx/kydt/">资讯</a>
+            <a class="seach-toggel" href="/sch/">院校库</a>
+            <a class="seach-toggel" href="/zsml/">硕士目录</a>
+            <a class="seach-toggel" href="/sswbgg/">网报公告</a>
+            <a class="seach-toggel" href="/yzwb/">统考网报</a>
+            <a class="seach-toggel" href="/wsqr/stu/">网上确认</a>
+            <a class="seach-toggel" href="/apply/cjcx/">成绩查询</a>
+            <a class="seach-toggel" href="/yztj/">复试调剂</a>
+            <a class="seach-toggel" href="/tm/">推免服务</a>
+            <a class="seach-toggel" href="/zsgs/">信息公开</a>
+            <span class="top-nav-hide seach-toggel">
+                <span class="top-nav-more">更多<img src="https://t2.chei.com.cn/common/images/wap-icon/nav-next.svg" class="nav-next"></span>
+                <div class="top-nav-pop">
+                    <span class="top-nav-pop-arrow"></span>
+                    <div class="top-nav-pop-clo">
+                        <a href="/kyzx/jybzc/">教育部政策</a>
+                        <a href="https://yz.chsi.com.cn/kyzx/zt/kyfs.shtml">复试分数线</a>
+                        <a href="https://yz.chsi.com.cn/yzzt/glllk">管理类专硕</a>
+                    </div>
+                    <div class="top-nav-pop-clo">
+                        <a href="/kyzx/yxzc/">院校政策</a>
+                        <a href="https://yz.chsi.com.cn/yzzt/zbft">研招访谈</a>
+                        <a href="https://yz.chsi.com.cn/kyzx/zt/zsxz.shtml">专业学位</a>
+                    </div>
+                    <div class="top-nav-pop-clo">
+                        <a href="/kyzx/zsjz/">招生简章</a>
+                        <a href="/bsmlcx/">博士目录</a>
+                        <a href="/zyk/">专业库</a>
+                    </div>
+                    <div class="top-nav-pop-clo">
+                        <a href="/zxdy/">在线咨询</a>
+                        <a href="/bsbm/">博士网报</a>
+                    </div>
+                </div>
+            </span>
+        </div>
+        <div class="top-nav-load">
+            <div class="top-nav-search-input" id="top-nav-input">
+                <form class="site-search" action="https://cn.bing.com/search" target="_blank" method="get">
+                    <input type="hidden" class="realQuery" name="q" value="">
+                    <input placeholder="" type="text" name="query" autocomplete="off" id="top-nav-search-input" class="search-input" value="" maxlength="100">
+                    <button type="submit" class="search-button"></button>
+                </form>
+            </div>
+            <span class="search-cancel">取消</span>
+            <span class="top-nav-load-search" id="top-nav-search"></span>
+            <span class="info-line"></span>
+            <a href="/user/">用户中心</a>
+            <span class="info-line"></span>
+            <a href="https://account.chsi.com.cn/account/preregister.action?from=yz-home">注册</a>
+        </div>
+    </div>
+</div>
+<script>
+function handleLinkClick(event, type) {
+    event = event || window.event;
+    var target = event.target || event.srcElement;
+
+    var link = findClosestLink(target);
+    if (link) {
+        var href = link.getAttribute('href');
+        var label = link.textContent.trim();
+
+        gaTrackerOutboundLink({ eventCategory: type, eventAction: 'click', eventLabel: label });
+    }
+}
+
+function findClosestLink(element) {
+    while (element && element.nodeName !== 'A') {
+        element = element.parentNode;
+    }
+    if (element) {
+        return element;
+    }
+    return null;
+}
+document.addEventListener('DOMContentLoaded', function () {
+    const topNavSearch = document.getElementById('top-nav-search');
+    const searchCancel = document.querySelector('.search-cancel');
+    const searchInput = document.querySelector('.search-input');
+    const realQuery = document.querySelector('.realQuery');
+    const searchForm = document.querySelector('.site-search');
+
+    // 点击搜索图标：显示输入框（添加 active 类）
+    if (topNavSearch) {
+        topNavSearch.addEventListener('click', function (event) {
+            event.stopPropagation();
+            document.querySelector('.top-nav-wrapper').classList.add('active');
+            searchInput.focus();
+        });
+    }
+
+    // 点击取消按钮：移除 active 类
+    if (searchCancel) {
+        searchCancel.addEventListener('click', function (event) {
+            document.querySelector('.top-nav-wrapper').classList.remove('active');
+        });
+    }
+
+    // 点击文档其他地方：移除 active 类
+    document.addEventListener('click', function (event) {
+        const wrapper = document.querySelector('.top-nav-wrapper');
+        if (wrapper && !wrapper.contains(event.target)) {
+            wrapper.classList.remove('active');
+        }
+    });
+
+    // 提交表单前处理搜索词
+    if (searchForm) {
+        searchForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // 阻止默认提交
+
+            const val = searchInput.value.trim();
+
+            if (!val) {
+                alert("请输入关键词");
+                return;
+            }
+
+            // 设置 realQuery 的值为关键词 + site:xxx
+            realQuery.value = val + ' site:yz.chsi.com.cn';
+
+            // 手动提交表单
+            searchForm.submit();
+        });
+    }
+});
+</script>
+        <div class="yz-header-banner-wrapper">
+            <div class="banner">
+                <h1>2026年部分考生初试成绩查询</h1>
+                <div class="ch-sub-title">本系统所有数据均为招生单位提供，招生单位对查询结果负责解释。</div>
+            </div>
+        </div>
+        <div id="app" v-cloak class="container clearfix">
+        
+        <template>
+            <template>
+                <Alert style="margin-top: 24px;">
+                    招生单位说明
+                    <template slot="desc">
+                        复试等相关事宜请关注我校研究生院网站（网址:http://grs.dlmu.edu.cn/）发布的通知。
+                    </template>
+                </Alert>
+            </template>
+            <div class="cjcx-box">
+                <table class="cjxx-info">
+                    <tr>
+                        <td class="cjxx-info-title">查询流水号：</td>
+                        <td class="cjxx-info-content">
+                            030200064176506205904
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cjxx-info-title">姓名：</td>
+                        <td class="cjxx-info-content">王雪盈</td>
+                    </tr>
+                    <tr>
+                        <td class="cjxx-info-title">报名号：</td>
+                        <td class="cjxx-info-content">650698763</td>
+                    </tr>
+                    <tr>
+                        <td class="cjxx-info-title">准考证号：</td>
+                        <td class="cjxx-info-content">100286650600011</td>
+                    </tr>
+                    <tr class="cjxx-info-cut">
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td class="cjxx-info-title">总分：</td>
+                        <td class="cjxx-info-content">331</td>
+                    </tr>
+                    <tr>
+                        <td class="cjxx-info-title">第一门：</td>
+                        <td class="cjxx-info-content">
+                            (101)思想政治理论：68
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cjxx-info-title">第二门：</td>
+                        <td class="cjxx-info-content">
+                            (201)英语（一）：70
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cjxx-info-title">第三门：</td>
+                        <td class="cjxx-info-content">
+                            (612)法理、国际法：98
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cjxx-info-title">第四门：</td>
+                        <td class="cjxx-info-content">
+                            (819)民法、刑法：95
+                        </td>
+                    </tr>
+                    <tr class="cjxx-info-cut">
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td class="cjxx-info-title">备注：</td>
+                        <td class="cjxx-info-content">
+                            无
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cjxx-info-title"></td>
+                        <td class="cjxx-info-content">
+                            <a class="ch-btn" href="/apply/cjcx/">返回</a>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="cjcx-tip">
+                <p class="ch-paragraph14">注：若查询的成绩为负值，表示有缺考、违纪等情况。若仍对查询结果有疑问，请咨询相应的招生单位。</p>
+            </div>
+            <watermark target-element=".cjcx-box" :watermark-text="bkdwmc"></watermark>
+        </template>
+    </div>
+    </div>
+    <!-- 4: 底部区域 -->
+<style>
+    /**
+     * description: footer 共用底部;
+     * author:myx;
+     * date:2017-07;
+     */
+
+    .footer-wrapper {
+        line-height: 30px;
+        background: #282828;
+        color: #ababab;
+    }
+
+    .footer-wrapper a {
+        color: #ababab;
+    }
+
+    .footer-wrapper .footer {
+        position: relative;
+        width: 1180px;
+        height: 198px;
+        margin: 0 auto;
+    }
+
+    .footer-wrapper .footer-list {
+        position: absolute;
+        top: 32px;
+        left: 0px;
+    }
+
+    .footer-wrapper .footer-list a {
+        margin-right: 15px;
+    }
+
+    .footer-wrapper .footer-units {
+        position: absolute;
+        top: 75px;
+        left: 0px;
+    }
+
+    .footer-wrapper .footer-media {
+        position: absolute;
+        top: 32px;
+        left: 844px;
+    }
+
+    .footer-wrapper .footer-media a {
+        display: inline-block;
+        margin-right: 30px;
+        vertical-align: top;
+    }
+
+    .footer-wrapper .footer-media a:hover {
+        text-decoration: none;
+    }
+
+    .footer-wrapper .footer-media .iconfont {
+        margin-right: 5px;
+        font-size: 20px;
+        vertical-align: middle;
+    }
+
+    .footer-wrapper .svg-icon {
+        display: inline-block;
+        width: 20px;
+        height: 23px;
+        margin-right: 3px;
+        vertical-align: middle;
+    }
+
+    .footer-wrapper svg use {
+        color: #ababab;
+    }
+
+    .footer-wrapper .footer-msg {
+        position: absolute;
+        top: 75px;
+        left: 844px;
+    }
+</style>
+<svg style="display: block; width: 0; height: 0">
+    <defs>
+        <symbol id="weibo" viewBox="0 0 16 16">
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g transform="translate(-139.000000, -4036.000000)" fill="currentColor" fill-rule="nonzero">
+                    <g transform="translate(139.000000, 4036.000000)">
+                        <rect opacity="0" x="0" y="0" width="16" height="16"></rect>
+                        <path
+                            d="M10.565,3.6325 C10.565,3.6325 12.335,3.445 13.0875,4.5425 C13.84,5.64 13.515,7.02 13.515,7.02 C13.4949253,7.12321653 13.5233752,7.22993417 13.5921672,7.30945968 C13.6609592,7.38898519 13.7624686,7.43250415 13.8675,7.4275 L14.0425,7.4275 C14.2747485,7.42111375 14.4682944,7.24766281 14.5,7.0175 C14.5,7.0175 14.9075,4.8525 13.65,3.6475 C12.67,2.705 11.3275,2.6025 10.79,2.6025 L10.5525,2.6025 C10.3240422,2.60790517 10.1412883,2.79398193 10.1399581,3.0225 L10.1399581,3.2275 C10.1383884,3.33892927 10.183335,3.44597927 10.264011,3.52285878 C10.3446871,3.59973829 10.4537777,3.63947671 10.565,3.6325 L10.565,3.6325 Z M7.08,11.845 C8.315,11.595 9.15,10.565 8.9475,9.5225 C8.7725,8.625 7.8875,8.0225 6.8575,8.0225 C6.6895953,8.02269714 6.52211889,8.03944478 6.3575,8.0725 C5.1225,8.3225 4.2875,9.3525 4.49,10.395 C4.6925,11.4375 5.8475,12.085 7.08,11.845 Z M7.115,9.1625 C7.27228055,9.15431868 7.41868486,9.24275691 7.48462743,9.38578027 C7.55057,9.52880363 7.52275233,9.69756891 7.41439607,9.8118625 C7.3060398,9.9261561 7.13899693,9.96292865 6.99266239,9.90470229 C6.84632786,9.84647593 6.75021264,9.70499305 6.75,9.5475 C6.7484414,9.34193445 6.90964354,9.17189932 7.115,9.1625 L7.115,9.1625 Z M5.75,9.765 C6.13,9.5875 6.5475,9.6775 6.68,9.9675 C6.8125,10.2575 6.625,10.635 6.25,10.8125 C6.12707576,10.8701293 5.99325221,10.9008149 5.8575,10.9025 C5.63577697,10.9190371 5.42511864,10.80342 5.32,10.6075 C5.18,10.32 5.3775,9.9425 5.75,9.765 Z"></path>
+                        <path
+                            d="M7.305,13.3975 C10.555,13.3975 13.155,11.675 13.155,9.5475 C13.155,7.7525 10.94,7.7525 10.94,7.635 C10.94,7.5175 12.045,6.4775 10.94,5.8275 C10.28,5.4375 9.29,5.6375 8.615,5.8275 C8.37593476,5.92066948 8.13025327,5.9958781 7.88,6.0525 C8.75,4.535 7.51,4.0525 6.88,4.0525 C5.38,4.0525 1.4325,7.41 1.4325,9.535 C1.4325,11.66 4.06,13.3975 7.305,13.3975 L7.305,13.3975 Z M6.7675,7.2625 C8.84,6.97 10.6775,7.845 10.87,9.2125 C11.0625,10.58 9.5375,11.9275 7.4625,12.2125 C7.19993139,12.2492176 6.93512346,12.2675954 6.67,12.2675004 C4.94,12.2675004 3.53,11.4525 3.3625,10.2675 C3.17,8.9 4.695,7.5525 6.7675,7.2625 L6.7675,7.2625 Z"></path>
+                        <path
+                            d="M12.1975,6.94 L12.4475,6.94 C12.6059157,6.93686389 12.7404701,6.82317064 12.77,6.6675 C12.77,6.6675 13.065,5.525 12.38,4.9 C12.0543816,4.60954157 11.6312754,4.45243883 11.195,4.46 C11.06222,4.45779075 10.9296415,4.47121643 10.8,4.5 C10.6460069,4.52717522 10.5322284,4.65869897 10.5275,4.815 L10.5275,4.9225 C10.523244,4.99648918 10.5520351,5.06855315 10.6061021,5.11924105 C10.6601692,5.16992894 10.7339389,5.19401568 10.8075,5.185 C10.8075,5.185 11.5575,5.0825 11.9225,5.5225 C12.2875,5.9625 12.0025,6.675 12.0025,6.675 C11.9769169,6.73717397 11.9856249,6.80819055 12.0254718,6.86234147 C12.0653188,6.9164924 12.1305304,6.94593085 12.1975,6.94 Z"></path>
+                    </g>
+                </g>
+            </g>
+        </symbol>
+        <symbol id="weixin" viewBox="0 0 17 16">
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g transform="translate(-118.000000, -4036.000000)" fill-rule="nonzero">
+                    <g transform="translate(118.000000, 4036.000000)">
+                        <rect fill="#000000" opacity="0" x="0" y="0" width="16" height="16"></rect>
+                        <path
+                            d="M6.33075,2 C3.4003125,2 1,3.99745313 1,6.53370312 C1,7.99773437 1.7986875,9.19954687 3.13267188,10.1306562 L2.5995,11.734625 L4.46289062,10.7997656 C5.129875,10.9321719 5.6646875,11.0676406 6.33003125,11.0676406 C6.49725,11.0676406 6.66329688,11.0594062 6.8276875,11.0462344 C6.72373438,10.6894531 6.66329688,10.3164531 6.66329688,9.92932812 C6.66329688,7.6016875 8.66332812,5.71171875 11.1955781,5.71171875 C11.3682031,5.71171875 11.5391875,5.72442187 11.709,5.74323437 C11.2477969,3.59573437 8.95190625,2 6.33075,2 L6.33075,2 Z M4.5990625,5.5990625 C4.19971875,5.5990625 3.796375,5.33142188 3.796375,4.93184375 C3.796375,4.53060938 4.19971875,4.26673438 4.5990625,4.26673438 C4.99840625,4.26673438 5.26464063,4.53085938 5.26464063,4.93184375 C5.26440625,5.33142188 4.99840625,5.59907813 4.5990625,5.59907813 L4.5990625,5.5990625 Z M8.32984375,5.5990625 C7.93025,5.5990625 7.52925,5.33142188 7.52925,4.93184375 C7.52925,4.53060938 7.93025,4.26673438 8.32982812,4.26673438 C8.73129687,4.26673438 8.9970625,4.53085938 8.9970625,4.93184375 C8.9970625,5.33142188 8.7310625,5.59907813 8.32982812,5.59907813 L8.32984375,5.5990625 Z M16.061125,9.86559375 C16.061125,7.73575 13.9284688,5.99865625 11.5333125,5.99865625 C8.9970625,5.99865625 6.999375,7.73575 6.999375,9.86559375 C6.999375,12.0001562 8.9970625,13.7337187 11.5333125,13.7337187 C12.064125,13.7337187 12.5991719,13.600125 13.1325781,13.4663125 L14.5949687,14.2668906 L14.1939844,12.9345469 C15.2638438,12.1323281 16.061125,11.067875 16.061125,9.86559375 L16.061125,9.86559375 Z M10.0631563,9.19954687 C9.797625,9.19954687 9.52975,8.93590625 9.52975,8.66660938 C9.52975,8.400625 9.797625,8.13296875 10.0631563,8.13296875 C10.4665,8.13296875 10.7303906,8.400625 10.7303906,8.66660938 C10.7303906,8.93590625 10.4665,9.19954687 10.0631563,9.19954687 Z M12.9954687,9.19954687 C12.7318281,9.19954687 12.4658281,8.93590625 12.4658281,8.66660938 C12.4658281,8.400625 12.7318281,8.13296875 12.9954687,8.13296875 C13.3948125,8.13296875 13.6626875,8.400625 13.6626875,8.66660938 C13.6626875,8.93590625 13.3948125,9.19954687 12.9954687,9.19954687 Z"
+                            fill="currentColor"></path>
+                    </g>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+</svg>
+<div class="footer-wrapper">
+    <div class="footer">
+        <div class="footer-list">
+            <a href="//www.chsi.com.cn/" target="_blank">学信网</a>
+            <a href="https://chesicc.chsi.com.cn/zxgw/zxjs/201604/20160418/1529506207.html" target="_blank">中心简介</a>
+            <a href="/doc/about.jsp" target="_blank">关于我们</a>
+            <a href="/doc/copyright.jsp" target="_blank">版权声明</a>
+            <a href="/help/" target="_blank">帮助中心</a>
+            <a href="/sitemap.jsp" target="_blank">网站地图</a>
+            <a href="https://www.chsi.com.cn/ad/202403/20240322/2293272455.html" target="_blank">网站宣传</a>
+        </div>
+        <div class="footer-units">
+            主办单位：<a href="https://chesicc.chsi.com.cn/" target="_blank">教育部学生服务与素质发展中心</a><br>
+            Copyright © 2003-<span>2026</span> <a href="//www.chsi.com.cn/" target="_blank">学信网</a> All Rights Reserved<br>
+            <a href="https://beian.miit.gov.cn" target="_blank">京ICP备19004913号-1</a>
+            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010202009747" target="_blank">
+                <img src="https://t1.chei.com.cn/chsi/images/jgwab.svg" style="vertical-align: middle; margin-bottom: 2px; margin-left: 8px;">
+                京公网安备11010202009747号
+            </a>
+        </div>
+        <div class="footer-media">
+            <a href="/kyzx/kp/wbwx.shtml" target="_blank">
+                <svg class="svg-icon">
+                    <use xlink:href="#weixin"></use>
+                </svg>
+                官方微信
+            </a>
+            <a href="/kyzx/kp/wbwx.shtml" target="_blank">
+                <svg class="svg-icon">
+                    <use xlink:href="#weibo"></use>
+                </svg>
+                官方微博
+            </a>
+        </div>
+        <div class="footer-msg">
+            客服热线：010-67410388<br>
+            客服邮箱：kefu@chsi.com.cn
+        </div>
+    </div>
+</div>
+
+    <script type="text/javascript" src="https://t3.chei.com.cn/common/ch/browser/not-ie.min.js"></script>
+    <script type="text/javascript" src="https://t3.chei.com.cn/common/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://t2.chei.com.cn/common/js/vue/2.6.10/vue.min.js"></script>
+    <script type="text/javascript" src="https://t3.chei.com.cn/common/js/lodash.min.js"></script>
+    <script type="text/javascript" src="https://t1.chei.com.cn/common/js/vue-plugins/vee-validate.min.js"></script>
+    <script type="text/javascript" src="https://t2.chei.com.cn/common/js/vue-plugins/zh_CN.min.js"></script>
+    <script type="text/javascript" src="https://t1.chei.com.cn/common/js/vue-plugins/moment.min.js"></script>
+    <script type="text/javascript" src="https://t2.chei.com.cn/common/vue-plugins/iview4.6.1/js/iview.min.js"></script>
+    <script type="text/javascript" src="https://t3.chei.com.cn/yz/apply/assets2021/pc/js/app-1.0.4.js"></script>
+    <script type="text/javascript" src="https://t1.chei.com.cn/yz/apply/assets2021/js/bz-1.2.0.min.js"></script>
+<script type="text/javascript" src="https://t1.chei.com.cn/yz/apply/assets2021/js/codeList-1.0.9.min.js"></script>
+<script type="text/javascript" src="https://t1.chei.com.cn/yz/apply/assets2021/js/ssList-1.0.4.min.js"></script>
+<script type="text/javascript" src="https://t3.chei.com.cn/yz/apply/assets2021/js/validator-1.0.1.min.js"></script>
+<script type="text/javascript" src="https://t3.chei.com.cn/common/js/api-1.0.4.js"></script>
+<script>
+    api.pollingOptions = {
+        resType: 'json',
+        taskUrl: '/apply/ajaxRs.do', //默认：''，不会进入轮询
+        pollingUrl: '/apply/asynProgress.do', //默认：''，不会进入轮询
+        pollingLimit: 10, // 请求的最大次数，默认：10次
+        pollingDelay: 1000, // 正常轮询时，请求延迟毫秒数，默认：1000毫秒
+        delayGaps: 300, // 轮询请求间隔递增毫秒数，默认：0毫秒（建议不要超过1000）
+    };
+    // api 统一配置
+    api.axiosConfig = {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+        }, // 其他为axios的配置-设置headers
+        timeout: 60000 // 其他为axios的配置-请求超时时间
+    };
+</script>
+
+    <!-- 页面中额外js引入 -->
+    
+        <style>
+    /* 水印容器样式 */
+    .watermark-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        pointer-events: none;
+        user-select: none;
+        background-repeat: repeat;
+        background-position: 0 0;
+        box-sizing: border-box;
+        background-attachment: local;
+    }
+
+    /* 全屏水印容器样式 */
+    .watermark-container-fullscreen {
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+</style>
+
+<template id="watermark-template">
+    <div style="display: none;"></div>
+</template>
+
+<script>
+    Vue.component('watermark', {
+        props: {
+            targetElement: {
+                type: String,
+                default: ''
+            },
+            watermarkText: {
+                type: String,
+                default: '中国研究生招生信息网'
+            },
+            fontSize: {
+                type: Number,
+                default: 22
+            },
+            color: {
+                type: String,
+                default: 'rgba(200, 200, 200, 0.4)'
+            },
+            rotate: {
+                type: Number,
+                default: -20
+            },
+            watermarkWidth: {
+                type: Number,
+                default: 170
+            },
+            watermarkHeight: {
+                type: Number,
+                default: 102
+            },
+            spacing: {
+                type: Number,
+                default: 0
+            },
+            overflow: {
+                type: String,
+                default: 'scale'
+            }
+        },
+        data: function() {
+            return {
+                isFullscreen: false,
+                watermarkObserver: null,
+                watermarkDom: null,
+                resizeHandler: null,
+                targetElementObserver: null,
+                resizeObserver: null
+            };
+        },
+        mounted: function() {
+            this.initWatermark();
+            // 绑定resize处理函数（ES5兼容）
+            this.resizeHandler = function() {
+                this.handleResize();
+            }.bind(this);
+            window.addEventListener('resize', this.resizeHandler);
+        },
+        beforeDestroy: function() {
+            this.destroyWatermark();
+            if (this.resizeHandler) {
+                window.removeEventListener('resize', this.resizeHandler);
+                this.resizeHandler = null;
+            }
+        },
+        methods: {
+            // 初始化水印
+            initWatermark: function() {
+                var _this = this;
+
+                // 创建水印DOM节点
+                this.createWatermarkDom();
+
+                // 判断是否全屏覆盖
+                if (!this.targetElement) {
+                    this.isFullscreen = true;
+                    this.watermarkDom.className = 'watermark-container watermark-container-fullscreen';
+                    document.body.appendChild(this.watermarkDom);
+                } else {
+                    var target = document.querySelector(this.targetElement);
+                    if (target) {
+                        // 设置目标元素为相对定位
+                        if (window.getComputedStyle(target).position === 'static') {
+                            target.style.position = 'relative';
+                        }
+                        this.watermarkDom.className = 'watermark-container';
+                        target.appendChild(this.watermarkDom);
+                        // 监听目标元素尺寸变化
+                        this.observeTargetElementSize(target);
+                    } else {
+                        // 目标元素不存在，默认全屏覆盖
+                        this.isFullscreen = true;
+                        this.watermarkDom.className = 'watermark-container watermark-container-fullscreen';
+                        document.body.appendChild(this.watermarkDom);
+                    }
+                }
+
+                this.generateWatermark();
+                this.observeWatermark();
+            },
+
+            // 创建水印DOM节点
+            createWatermarkDom: function() {
+                if (this.watermarkDom) {
+                    this.destroyWatermark();
+                }
+                this.watermarkDom = document.createElement('div');
+            },
+
+            // 生成水印（核心逻辑）
+            generateWatermark: function() {
+                var canvas = document.createElement("canvas");
+                var ctx = canvas.getContext("2d");
+                var rotateRad = Math.abs(this.rotate * Math.PI / 180);
+                var sin = Math.sin(rotateRad);
+                var cos = Math.cos(rotateRad);
+
+                // 计算旋转后尺寸
+                var rotatedWidth = Math.ceil(this.watermarkWidth * cos + this.watermarkHeight * sin);
+                var rotatedHeight = Math.ceil(this.watermarkWidth * sin + this.watermarkHeight * cos);
+                var canvasWidth = rotatedWidth + this.spacing;
+                var canvasHeight = rotatedHeight + this.spacing;
+
+                canvas.width = canvasWidth;
+                canvas.height = canvasHeight;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // 设置文字样式（ES5字符串拼接）
+                ctx.font = this.fontSize + "px Arial, Microsoft YaHei";
+                ctx.fillStyle = this.color;
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+
+                // 绘制水印文字
+                ctx.save();
+                ctx.translate(canvasWidth / 2, canvasHeight / 2);
+                ctx.rotate((this.rotate * Math.PI) / 180);
+
+                // 处理文字超长情况
+                var maxWidth = this.watermarkWidth - 20;
+                if (this.overflow === 'wrap') {
+                    this.drawWrappedText(ctx, this.watermarkText, 0, 0, maxWidth, this.fontSize * 1.2);
+                } else if (this.overflow === 'scale') {
+                    this.drawScaledText(ctx, this.watermarkText, 0, 0, maxWidth);
+                } else {
+                    this.drawTruncatedText(ctx, this.watermarkText, 0, 0, maxWidth);
+                }
+
+                ctx.restore();
+
+                // 应用水印背景（ES5字符串拼接）
+                var watermarkBase64 = canvas.toDataURL("image/png");
+                this.watermarkDom.style.backgroundImage = "url(" + watermarkBase64 + ")";
+                this.watermarkDom.style.backgroundRepeat = "repeat";
+                this.watermarkDom.style.backgroundPosition = "0 0";
+                this.watermarkDom.style.backgroundSize = canvasWidth + "px " + canvasHeight + "px";
+            },
+
+            // 绘制自动换行文字（纯ES5）
+            drawWrappedText: function(ctx, text, x, y, maxWidth, lineHeight) {
+                var words = text.split('');
+                var line = '';
+                var lines = [];
+                var i, testLine, metrics, testWidth;
+
+                // 逐字添加并检查宽度
+                for (i = 0; i < words.length; i++) {
+                    testLine = line + words[i];
+                    metrics = ctx.measureText(testLine);
+                    testWidth = metrics.width;
+
+                    if (testWidth > maxWidth && i > 0) {
+                        lines.push(line);
+                        line = words[i];
+                    } else {
+                        line = testLine;
+                    }
+                }
+                lines.push(line);
+
+                // 计算总高度并居中绘制
+                var totalHeight = lines.length * lineHeight;
+                var startY = y - totalHeight / 2;
+                var j;
+
+                for (j = 0; j < lines.length; j++) {
+                    ctx.fillText(lines[j], x, startY + j * lineHeight);
+                }
+            },
+
+            // 绘制缩放文字（纯ES5）
+            drawScaledText: function(ctx, text, x, y, maxWidth) {
+                var metrics = ctx.measureText(text);
+                var textWidth = metrics.width;
+
+                if (textWidth > maxWidth) {
+                    var scaleFactor = maxWidth / textWidth;
+                    ctx.save();
+                    ctx.scale(scaleFactor, scaleFactor);
+                    ctx.fillText(text, x / scaleFactor, y / scaleFactor);
+                    ctx.restore();
+                } else {
+                    ctx.fillText(text, x, y);
+                }
+            },
+
+            // 绘制截断文字（纯ES5）
+            drawTruncatedText: function(ctx, text, x, y, maxWidth) {
+                var metrics = ctx.measureText(text);
+                var textWidth = metrics.width;
+
+                if (textWidth > maxWidth) {
+                    var truncatedText = text;
+                    var ellipsis = '...';
+                    var ellipsisWidth = ctx.measureText(ellipsis).width;
+
+                    // 逐字减少直到适合
+                    while (ctx.measureText(truncatedText).width + ellipsisWidth > maxWidth && truncatedText.length > 0) {
+                        truncatedText = truncatedText.slice(0, -1);
+                    }
+
+                    ctx.fillText(truncatedText + ellipsis, x, y);
+                } else {
+                    ctx.fillText(text, x, y);
+                }
+            },
+
+            // 监听水印防篡改（纯ES5）
+            observeWatermark: function() {
+                var _this = this;
+
+                if (window.MutationObserver) {
+                    this.watermarkObserver = new MutationObserver(function(mutations) {
+                        mutations.forEach(function(mutation) {
+                            var isWatermarkRemoved = false;
+                            var isWatermarkHidden = false;
+
+                            // 检查水印是否被删除
+                            if (mutation.type === 'childList') {
+                                [].forEach.call(mutation.removedNodes, function(node) {
+                                    if (node === _this.watermarkDom) {
+                                        isWatermarkRemoved = true;
+                                    }
+                                });
+                            }
+
+                            // 检查水印是否被隐藏
+                            if (mutation.type === 'attributes' && mutation.target === _this.watermarkDom) {
+                                if (_this.watermarkDom.style.display === 'none' || _this.watermarkDom.style.visibility === 'hidden') {
+                                    isWatermarkHidden = true;
+                                }
+                            }
+
+                            if (isWatermarkRemoved || isWatermarkHidden) {
+                                _this.destroyWatermark();
+                                _this.initWatermark();
+                            }
+                        });
+                    });
+
+                    // 监听目标容器的变化
+                    var observerTarget = _this.isFullscreen ? document.body : _this.watermarkDom.parentElement;
+                    this.watermarkObserver.observe(observerTarget, {
+                        childList: true,
+                        attributes: true,
+                        subtree: true
+                    });
+                }
+            },
+
+            // 监听目标元素尺寸变化（兼容ES5）
+            observeTargetElementSize: function(target) {
+                var _this = this;
+
+                // 使用ResizeObserver监听元素尺寸变化
+                if (window.ResizeObserver) {
+                    this.resizeObserver = new ResizeObserver(function(entries) {
+                        _this.generateWatermark();
+                    });
+                    this.resizeObserver.observe(target);
+                } else {
+                    // 降级方案：使用MutationObserver监听样式变化
+                    if (window.MutationObserver) {
+                        this.targetElementObserver = new MutationObserver(function(mutations) {
+                            _this.generateWatermark();
+                        });
+
+                        this.targetElementObserver.observe(target, {
+                            attributes: true,
+                            attributeFilter: ['style', 'class']
+                        });
+                    }
+                }
+            },
+
+            // 窗口大小变化处理
+            handleResize: function() {
+                this.generateWatermark();
+            },
+
+            // 销毁水印（清理所有资源）
+            destroyWatermark: function() {
+                // 断开所有观察者
+                if (this.watermarkObserver) {
+                    this.watermarkObserver.disconnect();
+                    this.watermarkObserver = null;
+                }
+                if (this.targetElementObserver) {
+                    this.targetElementObserver.disconnect();
+                    this.targetElementObserver = null;
+                }
+                if (this.resizeObserver) {
+                    this.resizeObserver.disconnect();
+                    this.resizeObserver = null;
+                }
+
+                // 移除DOM节点
+                if (this.watermarkDom && this.watermarkDom.parentNode) {
+                    this.watermarkDom.parentNode.removeChild(this.watermarkDom);
+                    this.watermarkDom = null;
+                }
+            }
+        }
+    });
+</script>
+    
+    <!-- 引入脚本 -->
+    <script type="text/javascript">
+        var mixin = {
+            data: function () {
+                return {
+                    bkdwmc: "大连海事大学" || '中国研究生招生信息网',
+                }
+            },
+            mounted: function () {
+                // 谷歌埋点数据采集
+                gtag('event', 'load', {
+                    'event_category': 'cjcx',
+                    'event_label': 'pc-3-login'
+                });
+            }
+        };
+    </script>
+    <script type="text/javascript">
+        api.errorCallback = function (code, msg) {
+            // 当其他错误发生时，弹出提示层
+            setTimeout(function () {
+                iview.Modal.error({
+                    title: '提示',
+                    content: msg
+                });
+            }, 500);
+        };
+        var vmMain = new Vue({
+            el: '#app',
+            mixins: typeof mixin != 'undefined' ? [mixin] : {},
+            data: function () {
+                return {
+                    str: '',
+                    errorName: '',
+                    prefix: 'yzwb_',
+                    formErrors: []
+                }
+            },
+            methods: {
+                setError: function () {
+                    for (var i = 0; i < this.formErrors.length; i++) {
+                        if (this.formErrors[i].name == '') {
+                            this.str += this.formErrors[i].message + '<br>';
+                        } else {
+                            this.str += this.formErrors[i].message + '<br>';
+                            this.errorName += this.formErrors[i].name + ((i !== (this.formErrors.length - 1)) ? ',' : '');
+                            this.errors.add(this.prefix + this.formErrors[i].name, this.formErrors[i].message);
+                        }
+                    }
+                    this.setglogalError();
+                },
+                setglogalError: function () {
+                    if (this.str !== "") {
+                        this.$Notice.config({
+                            top: 50,
+                            duration: 60
+                        });
+                        this.$Notice.error({
+                            //                  title: this.errorName,
+                            title: '错误！',
+                            desc: this.str
+                        });
+                    }
+                },
+                repForm: function () {
+                    var _obj = this.$refs['form'].children;
+                    for (var i = 0; i < _obj.length; i++) {
+                        // _obj[i].value =  repenter(rep(_obj[i].value.trim()));
+                        _obj[i].value = _obj[i].value.trim();
+                    }
+                },
+                changeQuot: function (target, value) { //输入引号自动转化成全角
+                    // this.formValidate[target] = value.replace(/\'/g,"＇").replace(/\"/g,"＂");
+                },
+                changeQuot1: function (target, value) { //输入引号自动转化成全角
+                    // this[target] = value.replace(/\'/g,"＇").replace(/\"/g,"＂");
+                },
+                delSpace: function (target, value) { //去除学历和学位的空格
+                    this.formValidate[target] = value.replace(/\s/g, "");
+                },
+                submitForm: function () {
+                    var _this = this;
+                    this.$validator.validateAll().then(function (result) {
+                        if (result) {
+                            _this.repForm();
+                            _this.$nextTick().then(function () {
+                                if (typeof _this.validateAllMsg === 'function') {
+                                    if (_this.validateAllMsg().list.length > 0) {
+                                        var str = '';
+                                        for (var i = 0; i < _this.validateAllMsg().list.length; i++) {
+                                            str += _this.validateAllMsg().list[i] + '<br>';
+                                        }
+                                        if (_this.validateAllMsg().type === '一般') {
+                                            _this.$Modal.confirm({
+                                                title: '提示',
+                                                content: str,
+                                                onOk: function () {
+                                                    _this.$refs['form'].submit();
+                                                },
+                                                okText: '继续提交',
+                                                cancelText: '返回修改'
+                                            });
+                                        } else {
+                                            _this.$Modal.error({
+                                                title: '错误',
+                                                content: str,
+                                                okText: '返回修改'
+                                            });
+                                        }
+                                    } else {
+                                        _this.$refs['form'].submit();
+                                    }
+                                } else {
+                                    _this.$refs['form'].submit();
+                                }
+                            });
+                        } else {
+                            document.getElementsByName(_this.errors.items[0].field)[0].focus();
+                        }
+                    })
+                },
+                removePageLoading: function () {
+                    document.getElementById("appLoading").style.display = "none";
+                }
+            },
+            mounted: function () {
+                var _this = this;
+                setTimeout(function () {
+                    _this.setError();
+                }, 500);
+            }
+        });
+    </script>
+</body>
+
+</html>
