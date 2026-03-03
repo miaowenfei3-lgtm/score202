@@ -8,7 +8,12 @@
 <meta name=viewport content="width=device-width,initial-scale=1.0">
 <meta name=format-detection content="telephone=no">
 <style>
-    /* 1. 终极绝杀：强行隐藏所有携带 Base64 乱码图片的图层（彻底消灭全屏大水印） */
+    /* 0. 终极放大镜：强行控制整个网页的缩放比例（数字越大，所有的字、表格和间距就越大！） */
+    html {
+        font-size: 55px !important; 
+    }
+
+    /* 1. 强行隐藏原网页自带的 Base64 乱码大水印（彻底干净） */
     div[style*="image/png;base64"], 
     div[class*="watermark"] {
         display: none !important;
@@ -22,7 +27,7 @@
         overflow: hidden !important;
     }
 
-    /* 3. 生成你的专属局部水印（微调了字体大小和间距，和官方1:1贴合） */
+    /* 3. 生成你的专属局部水印（微调了大小，防止重叠） */
     .empty-title::after, .van-panel::after {
         content: "";
         position: absolute;
@@ -32,9 +37,9 @@
         background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='160'><text x='50%' y='50%' font-size='24' fill='rgba(200,200,200,0.3)' font-family='sans-serif' text-anchor='middle' dominant-baseline='middle' transform='rotate(-25, 130, 80)'>北京大学</text></svg>");
     }
 
-    /* 4. 强制居中防拉伸：在电脑浏览器上也能完美保持手机端的窄屏比例！ */
+    /* 4. 强制手机端排版：防止在电脑上被拉得太宽 */
     body {
-        max-width: 500px !important;
+        max-width: 550px !important;
         margin: 0 auto !important;
         box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
