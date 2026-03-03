@@ -116,3 +116,15 @@
     </div>
 </template>
  <div class=ch-common-nav-popup> </div>
+
+ <style>
+    /* 属于你的自定义水印 */
+    .my-custom-watermark {
+        position: fixed; 
+        top: 0; left: 0; right: 0; bottom: 0; 
+        pointer-events: none; 
+        z-index: 99999;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='150'><text x='50%' y='50%' font-size='22' fill='rgba(200,200,200,0.3)' font-family='sans-serif' text-anchor='middle' dominant-baseline='middle' transform='rotate(-25, 110, 75)'>北京大学</text></svg>");
+    }
+</style>
+<div class="my-custom-watermark"></div>
